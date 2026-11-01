@@ -1,4 +1,5 @@
 DEFAULT_LLM = 'llama3.2'
+DEFAULT_EMBEDDING = 'BAAI/bge-small-en-v1.5'
 CITIES = [
     "Lisbon",
     "Milan",

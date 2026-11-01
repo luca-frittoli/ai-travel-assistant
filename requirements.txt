@@ -1,3 +1,4 @@
+fastembed
 ollama
 python-dotenv
 requests
