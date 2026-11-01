@@ -1,6 +1,7 @@
 import json
 import re
-from src.config import CITIES
+from src.config import CITIES, CHUNK_SIZE, SHORT_TAIL_TOL
+from src.utils import chunk_words
 
 guides_path = 'guides/'
 url = "https://en.wikivoyage.org/wiki/"
@@ -18,9 +19,9 @@ if __name__ == '__main__':
                 "id": f"{city}-000",
                 "city": city,
                 "path": ["Intro"],
-                "section": "Intro",
+                "sections": ["Intro"],
                 "text": f"{city}\n",
-                "url": url + city
+                "url": url + city.replace(" ", "_")
             }
         ]
 
@@ -39,7 +40,7 @@ if __name__ == '__main__':
                     "id": f"{city}-{sec_id:03d}",
                     "city": city,
                     "path": path,
-                    "section": section,
+                    "sections": [section],
                     "text": f"{'>'.join([city] + path)}\n",
                     "url": url + city.replace(" ", "_") + '#' + path[-1].replace(" ", "_")
                 }
@@ -48,10 +49,28 @@ if __name__ == '__main__':
             else:
                 previous_elem["text"] += '\n' + line
 
+        final_chunks = []
         for chunk in chunks:
+            breadcrumb, text = chunk["text"].split('\n', 1)
+            if len(text.split()) > CHUNK_SIZE+SHORT_TAIL_TOL:
+                chunked_text = chunk_words(text)
+                for j, sub_text in enumerate(chunked_text):
+                    new_elem = {
+                        "id": f"{chunk['id']}-{j}",
+                        "city": city,
+                        "path": chunk["path"],
+                        "sections": chunk["sections"],
+                        "text": f"{breadcrumb}\n{sub_text}",
+                        "url": chunk["url"]
+                    }
+                    final_chunks.append(new_elem)
+            else:
+                final_chunks.append(chunk)
+
+        for chunk in final_chunks:
             chunk["text"] = chunk["text"].strip()
 
-        chunks = [chunk for chunk in chunks if "\n" in chunk["text"]]
+        chunks = [chunk for chunk in final_chunks if "\n" in chunk["text"]]
 
-        with open(guides_path + city + '_chunked.json', 'w', encoding='utf-8') as f:
+        with open(guides_path + city + '_chunked_hybrid.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, ensure_ascii=False, indent=2)
