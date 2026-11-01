@@ -11,3 +11,6 @@ CITIES = [
     "Dublin",
     "Pamplona"
 ]
+CHUNK_SIZE = 300
+CHUNK_OVERLAP = 30
+SHORT_TAIL_TOL = 50
