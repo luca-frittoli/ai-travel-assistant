@@ -1,22 +1,5 @@
-from ollama import chat
-from src.config import DEFAULT_LLM, CHUNK_SIZE, CHUNK_OVERLAP, SHORT_TAIL_TOL
+from src.config import CHUNK_SIZE, CHUNK_OVERLAP, SHORT_TAIL_TOL
 
-
-def ask_llm(prompt: str, model_name: str=DEFAULT_LLM, system: str=None) -> str:
-    messages = [
-        {
-            'role': 'user',
-            'content': prompt,
-        },
-    ]
-    if system is not None:
-        messages = [
-            {
-                'role': 'system',
-                'content': system
-            }
-        ] + messages
-    return chat(model=model_name, messages=messages).message.content
 
 def chunk_words(
         extract: str, chunk_size: int=CHUNK_SIZE, chunk_overlap: int=CHUNK_OVERLAP, short_tail_tol: int=SHORT_TAIL_TOL

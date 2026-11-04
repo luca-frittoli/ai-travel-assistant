@@ -1,20 +1,20 @@
 import json
-from src.utils import ask_llm
 from pathlib import Path
 from src.DenseRetriever import DenseRetriever
+from src.LLMCaller import LLMCaller
+from src.config import QUESTION_RULES as RULES
 
 data_path = 'data/sample_questions.json'
 out_path = Path('out')
 indexes_path = Path('indexes')
 method = 'hybrid'
 
-rules = "keep the answer under 50 words\nanswer only from the following chunks\ncite which chunks were used\ntell if the answer is missing\nchunks:\n"
-
 if __name__ == '__main__':
     with open(data_path, 'rb') as f:
         questions = json.load(f)
 
     retriever = DenseRetriever.load(indexes_path=str(indexes_path / method))
+    caller = LLMCaller()
 
     answers = []
     n = len(questions)
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         for _, chunk in closest_chunks:
             question_rules += f"{chunk['id']}: {chunk['text']}\n"
 
-        response = ask_llm(question['question'], system=rules+question_rules)
+        response = caller.ask_llm(question['question'], system=RULES+question_rules)
         answers.append({
             'question': question['question'],
             'expected_answer': question['expected_answer'],

@@ -1,5 +1,6 @@
-from src.utils import ask_llm
+from src.LLMCaller import LLMCaller
 
 if __name__ == '__main__':
-    response = ask_llm("Why is the sky blue?")
+    caller = LLMCaller()
+    response = caller.ask_llm("Why is the sky blue?")
     print(response)
