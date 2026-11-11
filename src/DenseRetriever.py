@@ -23,7 +23,7 @@ class DenseRetriever:
         self._text_chunks = [chunk[text_keyword] for chunk in self.chunks]
 
     @property
-    def text_chunks(self):
+    def text_chunks(self) -> list[str]:
         if self._text_chunks is None:
             self.extract_text_from_chunks()
         return self._text_chunks
