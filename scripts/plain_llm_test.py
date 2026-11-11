@@ -7,7 +7,7 @@ if __name__ == '__main__':
     with open(data_path, 'rb') as f:
         questions = json.load(f)
 
-    caller = LLMCaller
+    caller = LLMCaller()
     answers = []
     for question in questions:
         response = caller.ask_llm(question['question'], system="keep the answer under 50 words")

@@ -1,3 +1,6 @@
 guides/
 out/
 venv/
+.idea/
+indexes/
+__pycache__/
