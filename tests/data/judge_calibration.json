@@ -1,0 +1,86 @@
+[
+  {
+    "note": "same facts, different wording",
+    "question": "How do you get from Lisbon airport to the city centre by public transport?",
+    "expected_answer": "Metro red line from the airport station, less than 25 minutes, with a change to reach the centre.",
+    "model_answer": "Take the red metro line from the airport; you'll need to change line to reach the centre, and it takes around 20 minutes.",
+    "verdict": "correct"
+  },
+  {
+    "note": "confident hallucination contradicting the reference",
+    "question": "How do you get from Lisbon airport to the city centre by public transport?",
+    "expected_answer": "Metro red line from the airport station, less than 25 minutes, with a change to reach the centre.",
+    "model_answer": "Take the Aerobus line 175 to Sete Rios, then the green metro line to Rossio.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "correct plus extra correct detail",
+    "question": "Where is the most famous amusement park in Copenhagen?",
+    "expected_answer": "Tivoli, in the city centre.",
+    "model_answer": "Tivoli Gardens, right in the city centre next to the central station [Copenhagen-012].",
+    "verdict": "correct"
+  },
+  {
+    "note": "one of three key facts",
+    "question": "What are the biggest industrial sectors in Munich?",
+    "expected_answer": "Luxury car making, engineering, and insurance.",
+    "model_answer": "Munich is known for its car industry.",
+    "verdict": "partial"
+  },
+  {
+    "note": "two of three key facts plus a wrong one",
+    "question": "What are the biggest industrial sectors in Munich?",
+    "expected_answer": "Luxury car making, engineering, and insurance.",
+    "model_answer": "Car making, insurance and shipbuilding.",
+    "verdict": "partial"
+  },
+  {
+    "note": "right city wrong place",
+    "question": "Where are the famous skyscrapers in Milan?",
+    "expected_answer": "Porta Nuova district, in the North of the city.",
+    "model_answer": "They are around the Duomo, in the historic centre.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "unanswerable, clean refusal",
+    "question": "Can I go surfing in Bilbao?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The provided guide doesn't mention surfing, so I don't know.",
+    "verdict": "correct"
+  },
+  {
+    "note": "unanswerable, hedged guess must be incorrect",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The guide doesn't say, but Hemingway probably stayed there during the San Fermin festival.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "unanswerable, confident answer",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Yes, Hemingway lived in Pamplona for several years in the 1920s.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "answerable but the system refused",
+    "question": "Where can I drink beer in Munich?",
+    "expected_answer": "Beer Halls (indoors) or Beer Gardens (outdoors).",
+    "model_answer": "The answer is missing from the provided chunks.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "yes/no with right gist, citation markers to ignore",
+    "question": "Is it possible to visit Copenhagen by bike?",
+    "expected_answer": "Yes, it's a fast and flexible way to get around. The city is served by bike lanes.",
+    "model_answer": "Yes [Copenhagen-020], cycling is a fast way to get around and there are bike lanes everywhere [Copenhagen-021].",
+    "verdict": "correct"
+  },
+  {
+    "note": "number off",
+    "question": "How long does it take to get from the airport to Dublin city centre by local buses?",
+    "expected_answer": "Local buses take up to 1 hour.",
+    "model_answer": "About 15 minutes.",
+    "verdict": "incorrect"
+  }
+]
