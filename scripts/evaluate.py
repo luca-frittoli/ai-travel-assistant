@@ -1,0 +1,177 @@
+"""Stage 6: end-to-end evaluation -> retrieval hit rate + answer correctness.
+
+Run (needs Ollama):
+    python -m scripts.evaluate                       # all systems on all eval sets
+    python -m scripts.evaluate --limit 5             # quick run on the first 5 questions
+    python -m scripts.evaluate --judge-only out/answers_rag_hybrid_sample_questions.json
+
+Design notes:
+- Retrieve once per question and reuse the result: hit rate is measured on the
+  exact chunks the LLM sees (same K).
+- Generation and judging are separate steps: answers are saved first, so you can
+  re-judge them (--judge-only) after tweaking JUDGE_RULES without regenerating.
+- Every run appends one line to out/results.jsonl (numbers + config): these are
+  the two numbers every Stage 7 change should move.
+- Unanswerable questions are reported separately: refusing well and answering
+  well are different skills.
+"""
+import argparse
+import json
+from datetime import datetime
+from pathlib import Path
+
+from src.DenseRetriever import DenseRetriever
+from src.LLMCaller import LLMCaller
+from src.config import QUESTION_RULES, DEFAULT_LLM, DEFAULT_EMBEDDING
+from src.evaluation import hit_rate, judge_answers, summarize_verdicts
+
+DATA_FILES = ["data/sample_questions.json", "data/sample_questions_claude.json"]
+OUT = Path("out")
+INDEXES = Path("indexes")
+RESULTS_LOG = OUT / "results.jsonl"  # one line per run -> your tracked numbers
+K = 3                                # the same k the LLM actually sees
+
+
+# --------------------------------------------------------------------------- systems
+# Every system has the same shape: question dict -> (model_answer, retrieved or None)
+
+def answer_plain(caller: LLMCaller, question: dict) -> tuple[str, None]:
+    # Stage 1 baseline, no retrieval (see scripts/plain_llm_test.py)
+    return caller.ask_llm(question['question'], system="keep the answer under 50 words"), None
+
+
+def answer_rag(caller: LLMCaller, retriever: DenseRetriever, question: dict) -> tuple[str, list]:
+    retrieved = retriever.search(query=question['question'], k=K)
+
+    question_rules = ""
+    for _, chunk in retrieved:
+        question_rules += f"{chunk['id']}: {chunk['text']}\n"
+
+    return caller.ask_llm(question['question'], system=QUESTION_RULES + question_rules), retrieved
+
+
+# --------------------------------------------------------------------------- pipeline steps
+
+def generate(system_fn, questions: list[dict]) -> tuple[list[dict], list | None]:
+    """Run a system over the questions.
+
+    Returns (answers, retrieved): answers keep city/section so results can be
+    sliced later; retrieved is None if the system doesn't retrieve.
+    """
+    answers = []
+    retrieved = []
+    n = len(questions)
+    for i, question in enumerate(questions, start=1):
+        print(f"  answering {i}/{n}", end="\r", flush=True)
+        model_answer, retrieved_per_question = system_fn(question)
+        answers.append({**question, "model_answer": model_answer})
+        retrieved.append(retrieved_per_question)
+    print()
+    if all(r is None for r in retrieved):
+        retrieved = None
+    return answers, retrieved
+
+
+def summarize_split(judged: list[dict]) -> dict:
+    """Overall summary, plus answerable/unanswerable ones when items carry a section."""
+    summary = summarize_verdicts(judged)
+    if judged and all("section" in item for item in judged):
+        summary["answerable"] = summarize_verdicts([j for j in judged if j["section"] is not None])
+        summary["unanswerable"] = summarize_verdicts([j for j in judged if j["section"] is None])
+    return summary
+
+
+def evaluate_run(name: str, data_file: str, caller: LLMCaller,
+                 questions: list[dict], answers: list[dict], retrieved: list | None) -> dict:
+    hr = hit_rate(questions, retrieved) if retrieved is not None else None
+
+    print("  judging...")
+    judged = judge_answers(caller, answers)
+    save_json(judged, OUT / f"judged_{name}_{Path(data_file).stem}.json")
+
+    return {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "name": name,
+        "data_file": data_file,
+        "n_questions": len(questions),
+        "k": K if retrieved is not None else None,
+        "llm": DEFAULT_LLM,
+        "embedding": DEFAULT_EMBEDDING if retrieved is not None else None,
+        "hit_rate": hr,
+        **summarize_split(judged),
+    }
+
+
+def judge_only(path: Path, caller: LLMCaller) -> dict:
+    """Re-judge an existing answers file (e.g. out/out.json) without regenerating."""
+    answers = json.loads(path.read_text(encoding="utf-8"))
+    print(f"judging {path} ({len(answers)} answers)...")
+    judged = judge_answers(caller, answers)
+    save_json(judged, OUT / f"judged_{path.stem.removeprefix('answers_')}.json")
+    return {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "name": f"judge_only:{path.name}",
+        "data_file": str(path),
+        "n_questions": len(answers),
+        "llm": DEFAULT_LLM,
+        "hit_rate": None,  # retrieval isn't re-run
+        **summarize_split(judged),
+    }
+
+
+def save_json(obj, path: Path) -> None:
+    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def fmt(x: float | None) -> str:
+    return "  -  " if x is None else f"{x:.3f}"
+
+
+def log_result(record: dict) -> None:
+    with RESULTS_LOG.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    line = (f"{record['name']:<12} {Path(record['data_file']).stem:<28} "
+            f"hit_rate={fmt(record['hit_rate'])}  accuracy={fmt(record['accuracy'])}  "
+            f"score={fmt(record['score'])}  errors={record['error']}/{record['n']}")
+    if "unanswerable" in record:
+        line += (f"  | answerable acc={fmt(record['answerable']['accuracy'])}"
+                 f"  unanswerable acc={fmt(record['unanswerable']['accuracy'])}")
+    print(line)
+
+
+# --------------------------------------------------------------------------- main
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Stage 6 evaluation: hit rate + LLM-as-judge.")
+    parser.add_argument("--limit", type=int, help="only use the first N questions of each file")
+    parser.add_argument("--judge-only", type=Path, metavar="ANSWERS_JSON",
+                        help="re-judge a saved answers file instead of generating")
+    args = parser.parse_args()
+
+    OUT.mkdir(exist_ok=True)
+    caller = LLMCaller()
+
+    if args.judge_only:
+        log_result(judge_only(args.judge_only, caller))
+        return
+
+    hybrid = DenseRetriever.load(indexes_path=str(INDEXES / "hybrid"))
+    fixed = DenseRetriever.load(indexes_path=str(INDEXES / "fixed"))
+    runs = {
+        "plain": lambda q: answer_plain(caller, q),
+        "rag_hybrid": lambda q: answer_rag(caller, hybrid, q),
+        "rag_fixed": lambda q: answer_rag(caller, fixed, q),
+    }
+
+    for data_file in DATA_FILES:
+        questions = json.loads(Path(data_file).read_text(encoding="utf-8"))[:args.limit]
+        for name, system_fn in runs.items():
+            print(f"{name} on {data_file}")
+            answers, retrieved = generate(system_fn, questions)
+            save_json(answers, OUT / f"answers_{name}_{Path(data_file).stem}.json")
+            log_result(evaluate_run(name, data_file, caller, questions, answers, retrieved))
+
+
+if __name__ == "__main__":
+    main()
