@@ -1,6 +1,7 @@
 import pytest
 
 from src.config import DEFAULT_LLM, JUDGE_RULES
+from src.evaluation import VERDICTS
 from src.LLMCaller import LLMCaller
 from tests.conftest import ollama_available
 
@@ -58,6 +59,21 @@ class TestJudge:
     def test_returns_raw_model_output(self, fake_chat):
         fake_chat.reply = '{"reasoning": "ok", "verdict": "correct"}'
         assert LLMCaller().judge("Q", "R", "A") == fake_chat.reply
+
+    def test_requests_json_matching_verdict_schema(self, fake_chat):
+        # Structured output: Ollama constrains the reply to this JSON schema.
+        LLMCaller().judge("Q", "R", "A")
+        fmt = fake_chat.calls[0]["format"]
+        assert fmt["required"] == ["reasoning", "verdict"]
+        assert fmt["properties"]["verdict"]["enum"] == list(VERDICTS)
+
+    def test_judging_is_deterministic(self, fake_chat):
+        LLMCaller().judge("Q", "R", "A")
+        assert fake_chat.calls[0]["options"]["temperature"] == 0
+
+    def test_plain_questions_are_not_forced_to_json(self, fake_chat):
+        LLMCaller().ask_llm("Q")
+        assert fake_chat.calls[0].get("format") is None
 
 
 @pytest.mark.integration

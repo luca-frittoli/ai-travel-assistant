@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pytest
 
-from src.config import DEFAULT_LLM
+from src.config import JUDGE_LLM
 from src.evaluation import VERDICTS, parse_verdict
 from src.LLMCaller import LLMCaller
 from tests.conftest import ollama_available
@@ -22,7 +22,7 @@ CASES = json.loads((Path(__file__).parent / "data" / "judge_calibration.json").r
 
 pytestmark = [
     pytest.mark.integration,
-    pytest.mark.skipif(not ollama_available(DEFAULT_LLM), reason="Ollama server/model not available"),
+    pytest.mark.skipif(not ollama_available(JUDGE_LLM), reason="Ollama server/model not available"),
 ]
 
 
@@ -33,7 +33,7 @@ def test_cases_are_well_formed():
 
 @pytest.fixture(scope="module")
 def caller():
-    return LLMCaller()
+    return LLMCaller(JUDGE_LLM)
 
 
 @pytest.mark.parametrize("case", CASES, ids=[c["note"] for c in CASES])

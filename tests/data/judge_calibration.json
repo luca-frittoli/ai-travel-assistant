@@ -82,5 +82,82 @@
     "expected_answer": "Local buses take up to 1 hour.",
     "model_answer": "About 15 minutes.",
     "verdict": "incorrect"
+  },
+  {
+    "note": "audit: right answer, judge used outside knowledge (Buenos Aires is in South America)",
+    "question": "What is the famous shopping street in Northern Milan called?",
+    "expected_answer": "Buenos Aires shopping axis, it's in the North-East.",
+    "model_answer": "The famous shopping street in Northern Milan is Corso Buenos Aires.",
+    "verdict": "correct"
+  },
+  {
+    "note": "audit: extra correct details, judge invented a missing reference fact",
+    "question": "Is it possible to visit Copenhagen by bike?",
+    "expected_answer": "Yes, it's a fast and flexible way to get around. The city is served by bike lanes.",
+    "model_answer": "Yes, it is possible to visit Copenhagen by bike. The city has been designed to cater for cyclists with separate bicycle lanes on most larger roads, and over sixty percent of Copenhageners use their bike for daily commutes. Several companies rent out e-scooters and bikes are also available for rent.\n\nChunks used: Copenhagen-013",
+    "verdict": "correct"
+  },
+  {
+    "note": "audit: 40-60 min matches up to 1 hour",
+    "question": "How long does it take to get from the airport to Dublin city centre by local buses?",
+    "expected_answer": "Local buses take up to 1 hour.",
+    "model_answer": "The journey from Dublin Airport to Dublin city centre by local bus takes approximately 40-60 minutes, depending on traffic and the route taken. Bus No. 41 or Airlink Express are popular options.",
+    "verdict": "correct"
+  },
+  {
+    "note": "audit: unanswerable, confident hallucinated biography",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Yes, Ernest Hemingway lived in Pamplona, Spain from 1923 to 1929. He taught English at the Universidad de Navarra and befriended local bullfighters, which inspired his novel \"The Sun Also Rises\".",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "audit: says no metro when reference says yes",
+    "question": "Is there a metro line from Sofia airport to the city centre, and how long does it take?",
+    "expected_answer": "Yes, Metro Line 4 (Yellow) from just outside Terminal 2, operating 05:30-24:00; the journey to the city centre takes 40 minutes.",
+    "model_answer": "There is no metro line directly from Sofia Airport to the city centre. However, the Airport is connected to Sofia's city centre by bus (Line 84) and a new 25 km metro line is currently under construction.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "audit: unanswerable, disclaimer then price estimate",
+    "question": "How much does the Zürich Card cost for 24 hours?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "I don't have the most up-to-date pricing information. However, as of my knowledge cutoff in December 2023, the 24-hour Zürich Card typically costs around 29-33 CHF for adults, depending on the type of card and any additional discounts or promotions.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "audit: answerable but the system said info is missing",
+    "question": "What kind of footwear should I avoid during San Fermín?",
+    "expected_answer": "Don't wear flip-flops or sandals: the streets are filthy and there can be broken glass on the ground.",
+    "model_answer": "I couldn't find any information on footwear to avoid during San Fermín in the provided chunks.\n\nMissing: Specific information on footwear to avoid during San Fermín.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "audit: says missing, then adds a guess in a note",
+    "question": "How many people have died in Pamplona's running of the bulls?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Missing, as the answer is not provided in the given chunks.\n\nChunks used: Pamplona-000, Pamplona-002, Pamplona-003\n\nNote: According to available information, the running of the bulls in Pamplona has resulted in at least 3 human deaths, but the exact number is difficult to determine due to varying reports and documentation.",
+    "verdict": "incorrect"
+  },
+  {
+    "note": "audit: judge claimed the 8th floor was missing when it is stated",
+    "question": "Which top Copenhagen restaurant is located inside the national football stadium?",
+    "expected_answer": "Geranium, a three-Michelin-star restaurant on the 8th floor of the national stadium in Østerbro, with views over the park and the city.",
+    "model_answer": "Geranium is located inside the national football stadium, but specifically, it is on the 8th floor.",
+    "verdict": "correct"
+  },
+  {
+    "note": "audit: mostly-no reference, plain no answer",
+    "question": "Can I drink a beer on the metro in Copenhagen?",
+    "expected_answer": "Mostly no: drinking beer in public is legal and popular, but not on public transport (although it is tolerated if you are not behaving drunk).",
+    "model_answer": "Chunks used: Copenhagen-048: Copenhagen>Drink, Copenhagen-023-1: Copenhagen>Get around\n\nAnswer: No, you should not drink beer on the metro in Copenhagen.\n\nExplanation: The Copenhagen Metro is driverless, and there are signs indicating that drinking is not allowed.",
+    "verdict": "correct"
+  },
+  {
+    "note": "audit: asked bus and price, both right; stops and frequency not asked",
+    "question": "Which bus goes from Bilbao airport to the city centre, and what does it cost?",
+    "expected_answer": "Bizkaibus A3247 from the arrivals hall, €4.5 (2025), about 4 departures per hour, stopping at Alameda Recalde, Plaza Elíptica and Gran Vía before Bilbao Intermodal. A taxi costs about €25-30.",
+    "model_answer": "According to Bilbao-001, the bus that goes from Bilbao airport to the city centre is Bizkaibus A3247. The cost is €4.5.\n\nChunk used: Bilbao-001",
+    "verdict": "correct"
   }
 ]

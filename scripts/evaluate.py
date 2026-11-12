@@ -3,7 +3,8 @@
 Run (needs Ollama):
     python -m scripts.evaluate                       # all systems on all eval sets
     python -m scripts.evaluate --limit 5             # quick run on the first 5 questions
-    python -m scripts.evaluate --judge-only out/answers_rag_hybrid_sample_questions.json
+    python -m scripts.evaluate --judge-only out/answers_*.json   # re-judge saved answers
+    python -m scripts.evaluate --judge-model qwen2.5:14b        # try another judge
 
 Design notes:
 - Retrieve once per question and reuse the result: hit rate is measured on the
@@ -22,13 +23,14 @@ from pathlib import Path
 
 from src.DenseRetriever import DenseRetriever
 from src.LLMCaller import LLMCaller
-from src.config import QUESTION_RULES, DEFAULT_LLM, DEFAULT_EMBEDDING
-from src.evaluation import hit_rate, judge_answers, summarize_verdicts
+from src.config import QUESTION_RULES, DEFAULT_LLM, DEFAULT_EMBEDDING, JUDGE_LLM
+from src.evaluation import hit_rate, judge_agreement, judge_answers, summarize_verdicts
 
 DATA_FILES = ["data/sample_questions.json", "data/sample_questions_claude.json"]
 OUT = Path("out")
 INDEXES = Path("indexes")
 RESULTS_LOG = OUT / "results.jsonl"  # one line per run -> your tracked numbers
+HAND_LABELS = Path("data/hand_labels.json")  # hand-graded verdicts -> judge agreement
 K = 3                                # the same k the LLM actually sees
 
 
@@ -81,12 +83,16 @@ def summarize_split(judged: list[dict]) -> dict:
     return summary
 
 
-def evaluate_run(name: str, data_file: str, caller: LLMCaller,
+def load_hand_labels() -> list[dict]:
+    return json.loads(HAND_LABELS.read_text(encoding="utf-8")) if HAND_LABELS.exists() else []
+
+
+def evaluate_run(name: str, data_file: str, judge: LLMCaller,
                  questions: list[dict], answers: list[dict], retrieved: list | None) -> dict:
     hr = hit_rate(questions, retrieved) if retrieved is not None else None
 
     print("  judging...")
-    judged = judge_answers(caller, answers)
+    judged = judge_answers(judge, answers)
     save_json(judged, OUT / f"judged_{name}_{Path(data_file).stem}.json")
 
     return {
@@ -96,17 +102,19 @@ def evaluate_run(name: str, data_file: str, caller: LLMCaller,
         "n_questions": len(questions),
         "k": K if retrieved is not None else None,
         "llm": DEFAULT_LLM,
+        "judge": judge.model_name,
         "embedding": DEFAULT_EMBEDDING if retrieved is not None else None,
         "hit_rate": hr,
+        "judge_agreement": judge_agreement(judged, load_hand_labels()),
         **summarize_split(judged),
     }
 
 
-def judge_only(path: Path, caller: LLMCaller) -> dict:
+def judge_only(path: Path, judge: LLMCaller) -> dict:
     """Re-judge an existing answers file (e.g. out/out.json) without regenerating."""
     answers = json.loads(path.read_text(encoding="utf-8"))
     print(f"judging {path} ({len(answers)} answers)...")
-    judged = judge_answers(caller, answers)
+    judged = judge_answers(judge, answers)
     save_json(judged, OUT / f"judged_{path.stem.removeprefix('answers_')}.json")
     return {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
@@ -114,7 +122,9 @@ def judge_only(path: Path, caller: LLMCaller) -> dict:
         "data_file": str(path),
         "n_questions": len(answers),
         "llm": DEFAULT_LLM,
+        "judge": judge.model_name,
         "hit_rate": None,  # retrieval isn't re-run
+        "judge_agreement": judge_agreement(judged, load_hand_labels()),
         **summarize_split(judged),
     }
 
@@ -134,6 +144,9 @@ def log_result(record: dict) -> None:
     line = (f"{record['name']:<12} {Path(record['data_file']).stem:<28} "
             f"hit_rate={fmt(record['hit_rate'])}  accuracy={fmt(record['accuracy'])}  "
             f"score={fmt(record['score'])}  errors={record['error']}/{record['n']}")
+    agreement = record.get("judge_agreement") or {}
+    if agreement.get("n"):
+        line += f"  judge_agreement={agreement['agree']}/{agreement['n']}"
     if "unanswerable" in record:
         line += (f"  | answerable acc={fmt(record['answerable']['accuracy'])}"
                  f"  unanswerable acc={fmt(record['unanswerable']['accuracy'])}")
@@ -145,15 +158,18 @@ def log_result(record: dict) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Stage 6 evaluation: hit rate + LLM-as-judge.")
     parser.add_argument("--limit", type=int, help="only use the first N questions of each file")
-    parser.add_argument("--judge-only", type=Path, metavar="ANSWERS_JSON",
-                        help="re-judge a saved answers file instead of generating")
+    parser.add_argument("--judge-only", type=Path, nargs="+", metavar="ANSWERS_JSON",
+                        help="re-judge saved answers files instead of generating")
+    parser.add_argument("--judge-model", default=JUDGE_LLM, help=f"Ollama model for the judge (default {JUDGE_LLM})")
     args = parser.parse_args()
 
     OUT.mkdir(exist_ok=True)
-    caller = LLMCaller()
+    caller = LLMCaller()                 # generates the answers
+    judge = LLMCaller(args.judge_model)  # grades them
 
     if args.judge_only:
-        log_result(judge_only(args.judge_only, caller))
+        for path in args.judge_only:
+            log_result(judge_only(path, judge))
         return
 
     hybrid = DenseRetriever.load(indexes_path=str(INDEXES / "hybrid"))
@@ -170,7 +186,7 @@ def main() -> None:
             print(f"{name} on {data_file}")
             answers, retrieved = generate(system_fn, questions)
             save_json(answers, OUT / f"answers_{name}_{Path(data_file).stem}.json")
-            log_result(evaluate_run(name, data_file, caller, questions, answers, retrieved))
+            log_result(evaluate_run(name, data_file, judge, questions, answers, retrieved))
 
 
 if __name__ == "__main__":

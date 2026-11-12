@@ -20,7 +20,7 @@
 | 3 | Chunking with metadata | ✅ |
 | 4 | Embeddings and retrieval (hit rate@5) | ✅ |
 | 5 | Grounded generation with citations | ✅ |
-| 6 | Automated evaluation (LLM-as-judge) | ⏳ next |
+| 6 | Automated evaluation (LLM-as-judge) | 🔄 in progress |
 | 7 | Improvements (hybrid search, reranking, metadata filtering, query rewriting) | ⏳ |
 | 8 | Simple UI and rebuild with a RAG framework | ⏳ |
 
@@ -45,6 +45,36 @@ pip install -r requirements.txt
 ```
 
 You'll also need [Ollama](https://ollama.com/) installed with a model pulled locally. Configuration goes in a `.env` file (not committed).
+
+### Models
+
+Two local models are used, both set in [`src/config.py`](src/config.py):
+
+| Role | Default | Download | Free memory needed |
+|---|---|---|---|
+| Generator (answers questions) | `llama3.2` (3B) | ~2 GB | ~4 GB, runs almost anywhere |
+| Judge (grades answers in the evaluation) | `mistral-small` (24B) | ~14 GB | ~16 GB |
+
+```bash
+ollama pull llama3.2
+ollama pull mistral-small   # only needed for the evaluation
+```
+
+Minimum specs for the `mistral-small` judge: a Mac with **24 GB** unified memory (32 GB+ is comfortable), an NVIDIA GPU with **16 GB** VRAM, or CPU-only with 32 GB RAM (works, but a full evaluation takes hours).
+
+On a smaller machine, pick a lighter judge with `--judge-model`:
+
+| Judge | Download | Fits on |
+|---|---|---|
+| `qwen2.5:14b` | ~9 GB | 16 GB Mac / 12 GB GPU |
+| `gemma3:12b` | ~8 GB | 16 GB Mac / 10 GB GPU |
+| `qwen2.5:7b` | ~5 GB | 8–16 GB machines (noticeably weaker) |
+
+```bash
+python -m scripts.evaluate --judge-model qwen2.5:14b
+```
+
+Smaller judges make more mistakes, so check the `judge_agreement` number the evaluation prints: it compares the judge's verdicts with hand-graded ones in `data/hand_labels.json`. Don't use the generator model as its own judge: it grades its own answers too generously.
 
 ## License
 

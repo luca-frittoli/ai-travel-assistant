@@ -91,19 +91,19 @@ def judge_answers(caller, answers: list[dict]) -> list[dict]:
     LLMCaller (anything with a .judge(question, expected_answer, system_answer) method).
 
     Returns new dicts (inputs are not mutated) with all original keys plus
-    "verdict" and "reasoning". If the judge output can't be parsed, the verdict
-    is "error" and "reasoning" holds the raw judge output, so you can inspect it.
+    "verdict" and "reasoning". If the judge output can't be parsed, the judge is
+    asked once more; if that fails too, the verdict is "error" and "reasoning"
+    holds the last raw judge output, so you can inspect it.
     """
     judgements = []
     for answer in answers:
-        judgement = caller.judge(answer["question"], answer["expected_answer"], answer["model_answer"])
-        try:
-            judgement = parse_verdict(judgement)
-        except ValueError:
-            judgement = {
-                "verdict": "error",
-                "reasoning": judgement,
-            }
+        for _attempt in range(2):
+            raw = caller.judge(answer["question"], answer["expected_answer"], answer["model_answer"])
+            try:
+                judgement = parse_verdict(raw)
+                break
+            except ValueError:
+                judgement = {"verdict": "error", "reasoning": raw}
         judgements.append({**answer, "verdict": judgement["verdict"], "reasoning": judgement["reasoning"]})
     return judgements
 
@@ -114,9 +114,10 @@ def summarize_verdicts(judged: list[dict]) -> dict:
     Returns:
         {"n": total items,
          "correct": int, "partial": int, "incorrect": int, "error": int,
-         "accuracy": correct / n_valid,
-         "score": (correct + 0.5 * partial) / n_valid}
-    where n_valid excludes "error" items. accuracy and score are None when n_valid == 0.
+         "accuracy": correct / n,
+         "score": (correct + 0.5 * partial) / n}
+    "error" items count as incorrect (they stay in the denominator, scoring 0), so a
+    judge failure can never make a run look better. accuracy and score are None when n == 0.
     """
     aggregated_judgements = {
         "n": 0,
@@ -131,9 +132,23 @@ def summarize_verdicts(judged: list[dict]) -> dict:
 
     correct = aggregated_judgements["correct"]
     partial = aggregated_judgements["partial"]
-    n_valid = aggregated_judgements["n"] - aggregated_judgements["error"]
+    n = aggregated_judgements["n"]
 
-    aggregated_judgements["accuracy"] = correct / n_valid if n_valid > 0 else None
-    aggregated_judgements["score"] = (correct + 0.5 * partial) / n_valid if n_valid > 0 else None
+    aggregated_judgements["accuracy"] = correct / n if n > 0 else None
+    aggregated_judgements["score"] = (correct + 0.5 * partial) / n if n > 0 else None
 
     return aggregated_judgements
+
+
+def judge_agreement(judged: list[dict], labels: list[dict]) -> dict:
+    """How often the judge matches hand-labelled verdicts.
+
+    Items are matched on (question, model_answer), so labels only apply to the exact
+    answer text that was hand-graded (re-judging with --judge-only keeps it; regenerating
+    answers doesn't). Returns {"n": matched items, "agree": int, "rate": agree / n or None}.
+    """
+    by_answer = {(lab["question"], lab["model_answer"]): lab["verdict"] for lab in labels}
+    matched = [(item["verdict"], by_answer[(item["question"], item["model_answer"])])
+               for item in judged if (item["question"], item["model_answer"]) in by_answer]
+    agree = sum(judge_verdict == hand_verdict for judge_verdict, hand_verdict in matched)
+    return {"n": len(matched), "agree": agree, "rate": agree / len(matched) if matched else None}

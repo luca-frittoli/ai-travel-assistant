@@ -1,0 +1,1154 @@
+[
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "How do you get from Lisbon airport to the city centre by public transport?",
+    "expected_answer": "Metro red line from the airport station, less than 25 minutes, with a change to reach the centre.",
+    "model_answer": "From Lisbon Portela Airport, take the metro (Red Line) to the Aeroporto station. Then, transfer to the Red Line and get off at Rossio or Baixa-Chiado stations. Alternatively, take the bus 750 (Expresso) to the city centre. The journey takes around 30 minutes.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "What is the famous shopping street in Northern Milan called?",
+    "expected_answer": "Buenos Aires shopping axis, it's in the North-East.",
+    "model_answer": "The famous shopping street in Northern Milan is the Via Montenapoleone.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Where are the famous skyscrapers in Milan?",
+    "expected_answer": "Porta Nuova district, in the North of the city.",
+    "model_answer": "In Milan, you can find famous skyscrapers such as:\n\n* Duomo Tower (300 meters) - a historic Gothic skyscraper\n* Pirelli Tower (138 meters) - a modern skyscraper with a distinctive curved design\n* Torre Velasca (105 meters) - a steel skyscraper designed by Gino Cervi",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Where is the most famous amusement park in Copenhagen?",
+    "expected_answer": "Tivoli, in the city centre.",
+    "model_answer": "The most famous amusement park in Copenhagen is Tivoli Gardens. It's a historic amusement park that has been in operation since 1843 and is known for its beautiful gardens, rides, and entertainment options.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Is it possible to visit Copenhagen by bike?",
+    "expected_answer": "Yes, it's a fast and flexible way to get around. The city is served by bike lanes.",
+    "model_answer": "Yes, Copenhagen is highly bike-friendly. The city has over 400 km of bike lanes and paths, making it easy to get around. Many attractions are also within bike distance, and the city's compact size makes it a great way to explore.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "What are the biggest industrial sectors in Munich?",
+    "expected_answer": "Luxury car making, engineering, and insurance.",
+    "model_answer": "Munich is a major hub for several industrial sectors, including:\n\n1. Automotive: BMW and other car manufacturers have a significant presence.\n2. Aerospace: Airbus and other companies have factories and research centers.\n3. Biotechnology: Munich is home to a number of biotech companies, particularly in the pharmaceutical sector.\n4. Electronics: Companies like Infineon Technologies and Siemens have significant operations.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Where can I drink beer in Munich?",
+    "expected_answer": "Beer Halls (indoors) or Beer Gardens (outdoors).",
+    "model_answer": "In Munich, you can drink beer at traditional beer gardens (Biergärten), such as:\n\n* Hofbräuhaus\n* Augustiner-Keller\n* Löwenbräukeller\n* Wirtshaus am Neuen See\n\nYou can also find beer halls (Bierhalle) like the Viktualienmarkt and the Augustiner Bräuhaus.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Is Zurich safe for gay travellers?",
+    "expected_answer": "Yes, Zurich is probably the place in Switzerland that offers the most open environment for gays and lesbians.",
+    "model_answer": "Zurich, Switzerland is generally considered a very safe and welcoming city for LGBTQ+ travelers. It has a long history of promoting equality and has a strong presence of gay-friendly bars, clubs, and events. The city is also home to the Swiss Gay Rights Association.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "What are traditional fast foods in Sofia?",
+    "expected_answer": "Traditional Bulgarian bakeries offer banitsa, katma, and other kinds of pastry with ayran or boza.",
+    "model_answer": "In Sofia, Bulgaria, traditional fast foods include:\n\n* shopska salad (a cold salad of tomatoes, cucumbers, and cheese)\n* banitsa (flaky pastry filled with feta cheese or eggs)\n* kebapche (Bulgarian sausage)\n* banitsa-like pastries called \"manti\"",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I get around Bilbao by car?",
+    "expected_answer": "Bilbao is difficult to drive in, and certain vehicles may not be allowed.",
+    "model_answer": "Yes, you can drive around Bilbao. The city has a good network of roads, including the A-8 motorway and A-640. However, be aware that narrow streets and pedestrianized areas may limit driving. Parking options are available, but limited in city center.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I go surfing in Bilbao?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Bilbao is a landlocked city in the Basque Country, Spain. It does not have a coastline, making surfing not possible there. However, there are several nearby surf spots, such as San Sebastián and La Concha, which are about 1-2 hours away by car.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Yes, Ernest Hemingway lived in Pamplona, Spain from 1923 to 1929. He taught English at the Universidad de Navarra and befriended local bullfighters, which inspired his novel \"The Sun Also Rises\".",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "How long does it take to get from the airport to Dublin city centre by local buses?",
+    "expected_answer": "Local buses take up to 1 hour.",
+    "model_answer": "The journey from Dublin Airport to Dublin city centre by local bus takes approximately 40-60 minutes, depending on traffic and the route taken. Bus No. 41 or Airlink Express are popular options.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "What are cheap ways of getting around Chisinau?",
+    "expected_answer": "You can use trolley-buses, buses, and maxi-taxis, like the locals do.",
+    "model_answer": "In Chisinau, you can get around affordably by:\n\n* Walking or cycling\n* Using public buses (1-10 lei, ~0.50-0.60 EUR)\n* Taking taxis (5-10 lei, ~2.50-5 EUR)\n* Using ride-hailing services like Bolt or Yandex (5-10 lei, ~2.50-5 EUR)",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions.json",
+    "question": "What is a traditional fast-food in Chisinau?",
+    "expected_answer": "The 'langos' which are fried dough with either 'cartofi' (potatoes), 'brînza' (cheese), 'varza' (cabbage) or 'ficat' (liver).",
+    "model_answer": "In Chisinau, traditional fast-food is \"Mămăligă\", a thick, cornmeal-based porridge often served with sour cream, cheese, or meat. It's a popular street food, often sold by vendors or from street stalls.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "How do you get from Lisbon airport to the city centre by public transport?",
+    "expected_answer": "Metro red line from the airport station, less than 25 minutes, with a change to reach the centre.",
+    "model_answer": "To get to the city centre from Lisbon Airport by public transport, take the metro (Vermelha line, red line) from the Airport metro station, which takes about 16 minutes to reach the central Saldanha station, or less than 25 minutes to reach Baixa-Chiado with a change to the Verde or Azul lines (€1.75 single journey). Alternatively, take bus lines 22, 44, 83, 705, 708, 744, 745, or night bus line 208 (€2 fare).",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "What is the famous shopping street in Northern Milan called?",
+    "expected_answer": "Buenos Aires shopping axis, it's in the North-East.",
+    "model_answer": "Corso Buenos Aires is considered to be the longest shopping street in Europe.\n\nChunks used: Milan-035-0: Milan>Buy>Shopping districts",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Where are the famous skyscrapers in Milan?",
+    "expected_answer": "Porta Nuova district, in the North of the city.",
+    "model_answer": "There are no famous skyscrapers in Milan. \n\nChunks used: Milan-000, Milan-031",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Where is the most famous amusement park in Copenhagen?",
+    "expected_answer": "Tivoli, in the city centre.",
+    "model_answer": "The most famous amusement park in Copenhagen is Tivoli. (Copenhagen-038: Copenhagen>Do>Amusement parks)\n\nAnswer is missing.\n Chunk used: Copenhagen-038: Copenhagen>Do>Amusement parks",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Is it possible to visit Copenhagen by bike?",
+    "expected_answer": "Yes, it's a fast and flexible way to get around. The city is served by bike lanes.",
+    "model_answer": "Copenhagen-027: Copenhagen>Get around>By bicycle\n\nYes, it is possible to visit Copenhagen by bike.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "What are the biggest industrial sectors in Munich?",
+    "expected_answer": "Luxury car making, engineering, and insurance.",
+    "model_answer": "**Chunks used:** Munich-004: Munich>Understand>Economy, Munich-013: Munich>Get around\n\nThe answer is: Aerospace, Biotechnology, Software and Service industries, Automobiles, IT, and High-tech.\n\n**Explanation:** According to Munich-004: Munich>Understand>Economy, Munich is a centre for these six industries.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Where can I drink beer in Munich?",
+    "expected_answer": "Beer Halls (indoors) or Beer Gardens (outdoors).",
+    "model_answer": "In Munich, you can drink beer at numerous beer halls, beer gardens, bars, and clubs. Some popular options include:\n\n* Hofbräuhaus in Altstadt\n* Viktualienmarkt in Altstadt\n* Chinese Tower in English Garden\n* Paulaner and Bavariapark in Ludwigsvorstadt\n* Löwenbräukeller and Augustiner in Maxvorstadt\n* Bars in Haidhausen, such as Alte Utting and CCC Container Collective\n* Rooftop bars in Munich\n* Clubs, such as Blitz Club, Bahnwärter Thiel, Rote Sonne, and Pacha\n\nNote: Some beer halls and bars may have dress codes or require a photo-ID for entry.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Is Zurich safe for gay travellers?",
+    "expected_answer": "Yes, Zurich is probably the place in Switzerland that offers the most open environment for gays and lesbians.",
+    "model_answer": "According to Zurich-058: Zurich>Stay safe, Zurich is considered a safe city for gay and lesbian travellers, with the city being the most liberal in Switzerland and having a strong LGBTQI presence.\n\nchunks used: Zurich-058: Zurich>Stay safe\n\nAnswer: Yes",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "What are traditional fast foods in Sofia?",
+    "expected_answer": "Traditional Bulgarian bakeries offer banitsa, katma, and other kinds of pastry with ayran or boza.",
+    "model_answer": "In Sofia, traditional fast foods include slices of pizza, hot dogs, and sandwiches for under €2, as well as banitsa and other kinds of pastry from bakeries, often consumed with ayran or boza.\n\n chunks used:\nSofia-032: Sofia>Eat>Fast food\n\nmissing information:\ntype of traditional fast food\napproximate price",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I get around Bilbao by car?",
+    "expected_answer": "Bilbao is difficult to drive in, and certain vehicles may not be allowed.",
+    "model_answer": "Bilbao is difficult to drive in due to hilly one-way streets and frequent construction projects. Having an automobile map helps, and allow at least 30 min extra to find the right exit from the city.\n\n**Chunks used:** Bilbao-010: Bilbao>Get around>By car\n\n**Answer is present.**",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I go surfing in Bilbao?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The answer is not available in the given chunks.\n\nchunks used:\nBilbao-002: Bilbao>Understand>Tourist information\nBilbao-013: Bilbao>Get around>Cycling\n\nThe chunks do not provide information on surfing activities in Bilbao.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "There is no mention of Ernest Hemingway living in Pamplona in the provided text chunks.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "How long does it take to get from the airport to Dublin city centre by local buses?",
+    "expected_answer": "Local buses take up to 1 hour.",
+    "model_answer": "According to Dublin-018-0, local buses (Dublin Bus) take about an hour to reach Dublin city centre.\n\nChunks used: Dublin-018-0\n\nAnswer is present",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "What are cheap ways of getting around Chisinau?",
+    "expected_answer": "You can use trolley-buses, buses, and maxi-taxis, like the locals do.",
+    "model_answer": "To get around Chisinau on a budget, use a trolleybus (about 30 lines through the city), bus, or maxi-taxis. A ride costs 6 lei regardless of the mode of transportation.\n\nChunks used: Chisinau-009: Chisinau>Get around>By bus",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions.json",
+    "question": "What is a traditional fast-food in Chisinau?",
+    "expected_answer": "The 'langos' which are fried dough with either 'cartofi' (potatoes), 'brînza' (cheese), 'varza' (cabbage) or 'ficat' (liver).",
+    "model_answer": "A traditional fast food in Chisinau is Andy's Pizza, a fast-food restaurant serving a variety of dishes including pizza, pasta and local dishes.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "How do you get from Lisbon airport to the city centre by public transport?",
+    "expected_answer": "Metro red line from the airport station, less than 25 minutes, with a change to reach the centre.",
+    "model_answer": "You can take the metro (Red Line) from the airport to the central Saldanha station (about 16 minutes), then change to lines Verde or Azul to reach Baixa-Chiado. Bus 44 takes you to the Oriente railway station, then change to the metro. The metro ticket costs around €1.75 and the bus ticket €2.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "What is the famous shopping street in Northern Milan called?",
+    "expected_answer": "Buenos Aires shopping axis, it's in the North-East.",
+    "model_answer": "The famous shopping street in Northern Milan is Corso Buenos Aires.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Where are the famous skyscrapers in Milan?",
+    "expected_answer": "Porta Nuova district, in the North of the city.",
+    "model_answer": "There are no famous skyscrapers in Milan. Milan has a more compact and historic city center, and its architecture is dominated by medieval and Renaissance buildings, as well as grandiose Gothic cathedrals like the Duomo. \n\nChunk used: Milan-000: Milan",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Where is the most famous amusement park in Copenhagen?",
+    "expected_answer": "Tivoli, in the city centre.",
+    "model_answer": "The Tivoli Gardens amusement park is the most famous amusement park in Copenhagen.\n\nChunk used: Copenhagen-028: Copenhagen, Copenhagen-033: Copenhagen",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Is it possible to visit Copenhagen by bike?",
+    "expected_answer": "Yes, it's a fast and flexible way to get around. The city is served by bike lanes.",
+    "model_answer": "Yes, it is possible to visit Copenhagen by bike. The city has been designed to cater for cyclists with separate bicycle lanes on most larger roads, and over sixty percent of Copenhageners use their bike for daily commutes. Several companies rent out e-scooters and bikes are also available for rent.\n\nChunks used: Copenhagen-013",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "What are the biggest industrial sectors in Munich?",
+    "expected_answer": "Luxury car making, engineering, and insurance.",
+    "model_answer": "The biggest industrial sectors in Munich are:\n\n* Aerospace\n* Biotechnology\n* Software and service industries\n* Automobiles\n* High-tech\n* Insurance (thanks to companies like Allianz and Munich Re)\n\nThese sectors are driven by the presence of companies like BMW, Siemens, and other major players in the region.\n\nChunks used: Munich-004, Munich-000, Munich-035",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Where can I drink beer in Munich?",
+    "expected_answer": "Beer Halls (indoors) or Beer Gardens (outdoors).",
+    "model_answer": "You can drink beer in Munich's many beer gardens and bars. Some popular options include Hofbräuhaus in Altstadt, Viktualienmarkt in Altstadt, Chinese Tower in English Garden, and numerous rooftop bars throughout the city.\n\nChunks used: Munich-029: Munich, Munich-035: Munich\n\nAnswer length: 39 words",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Is Zurich safe for gay travellers?",
+    "expected_answer": "Yes, Zurich is probably the place in Switzerland that offers the most open environment for gays and lesbians.",
+    "model_answer": "Gays and lesbians need not take special precautions for their safety on the streets, as the city is known to be an open and welcoming environment. (Chunks: Zurich-048, Zurich-049)\n\nSource: Zurich-048 and Zurich-049",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "What are traditional fast foods in Sofia?",
+    "expected_answer": "Traditional Bulgarian bakeries offer banitsa, katma, and other kinds of pastry with ayran or boza.",
+    "model_answer": "According to Sofia-026, some traditional fast foods in Sofia include:\n\n1. Kebabs and falafel\n2. Mekitsa (a traditional Bulgarian breakfast dish)\n3. Banitsa (pastry with cheese, ham, jam, or chocolate)\n4. Pizza (Bulgarian-style pizza, specifically Pizza Victoria)\n\nThese traditional fast foods can be found in various restaurants and cafes throughout the city, particularly in the city center.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I get around Bilbao by car?",
+    "expected_answer": "Bilbao is difficult to drive in, and certain vehicles may not be allowed.",
+    "model_answer": "Bilbao is difficult to drive in due to hilly one-way streets and frequent construction projects.\n\n**Chunk used:** Bilbao-003: Bilbao\n\n**Answer is missing:** No, due to the city's infrastructure, driving is not recommended.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Can I go surfing in Bilbao?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Missing information, chunks are not sufficient to answer this question.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "Has Hemingway lived in Pamplona?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "I couldn't find any information confirming that Ernest Hemingway lived in Pamplona.\n\n chunks used: Pamplona (Basque: Iruña) - Pamplona-000\n\nanswer is missing \n\nNote: Although the chunks do not mention Hemingway, it is known that he lived in Spain and spent time in Pamplona.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "How long does it take to get from the airport to Dublin city centre by local buses?",
+    "expected_answer": "Local buses take up to 1 hour.",
+    "model_answer": "It takes an hour to get to Dublin city centre by local buses (Dublin Bus).",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "What are cheap ways of getting around Chisinau?",
+    "expected_answer": "You can use trolley-buses, buses, and maxi-taxis, like the locals do.",
+    "model_answer": "You can use the trolleybus 30, which leaves just out of the arrivals door and costs 6 lei. Alternatively, you can wait at the bus station next to the expressway for either trolleybus 30 or bus 33.\n\nChunks used: Chisinau-011: Chisinau",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions.json",
+    "question": "What is a traditional fast-food in Chisinau?",
+    "expected_answer": "The 'langos' which are fried dough with either 'cartofi' (potatoes), 'brînza' (cheese), 'varza' (cabbage) or 'ficat' (liver).",
+    "model_answer": "A traditional fast-food in Chisinau is kebab and falafel, served by fast food restaurants similar to McDonald's, such as Star Kebab.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is a 24-hour ticket for Lisbon's metro, buses and trams, and is there a version that also covers the train to Sintra?",
+    "expected_answer": "The day pass costs €7 for metro, buses and trams for 24 hours from purchase; an €11 pass also includes suburban rail (e.g. to Sintra, Estoril).",
+    "model_answer": "A 24-hour ticket for Lisbon's metro, buses, and trams costs around €7.20. A \"Viva Viagem\" pass that also covers the train to Sintra costs around €8.50 (€7.20 + €1.30 for the Sintra train). Note: Prices may vary, check the official website for the latest information.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the melancholic traditional music of Lisbon, and in which neighbourhoods can I hear it?",
+    "expected_answer": "Fado, added to UNESCO's Intangible Cultural Heritage list in 2011; fado bars are especially common in Bairro Alto and Alfama (where there is also a Fado museum).",
+    "model_answer": "You're referring to Fado. It's a melancholic traditional Portuguese music originating in Lisbon's districts of Alfama, Bairro Alto, and Santo António. The soulful sound is typically performed in small, dimly lit restaurants and bars, often accompanied by acoustic guitar.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where can I get on the internet for free in Lisbon?",
+    "expected_answer": "Many of Lisbon's municipal libraries offer free wifi (internet cafes in Rossio, Restauradores and Bairro Alto charge about €2-3 per hour).",
+    "model_answer": "In Lisbon, you can access the internet for free at:\n\n1. Biblioteca Nacional de Portugal (National Library of Portugal)\n2. Museus de Lisboa (Lisbon Museums)\n3. Biblioteca Pública do Parque das Nações\n4. Some public Wi-Fi points in parks and plazas\n\nCheck with local tourist information for exact locations.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What's the cheapest way to get from Linate airport into Milan and how much does it cost?",
+    "expected_answer": "Metro Line 4 (M4), which runs every 7 minutes; it costs €2.20, the same as a normal public transport ticket.",
+    "model_answer": "The cheapest way to get from Linate airport to Milan is by bus. ATAC bus route 50 connects the airport to the city center (Duomo stop) for €2-4 (€1.50 with Milan Card). The journey takes around 45 minutes.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is it acceptable to make a full dinner out of the aperitivo buffet in Milan?",
+    "expected_answer": "Not really: the aperitivo (roughly 19:00-21:00, drinks €5-8 with a free buffet) is a snack to accompany a drink, not a free dinner; filling up on it is seen as tacky.",
+    "model_answer": "While aperitivo buffets can be delightful, it's generally not intended for a full dinner. Aperitivo is typically a light, social snack before dinner, usually served from 6-8 pm. Eating a full meal from a buffet intended for aperitivo might be considered impolite or overly indulgent.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the fixed taxi fare between Milan and Malpensa airport?",
+    "expected_answer": "€70 one way, non-stop (fixed by law); Malpensa-Linate is €85.",
+    "model_answer": "I'm not aware of a fixed taxi fare between Milan and Malpensa Airport. Taxi fares in Italy can vary depending on the airport, traffic conditions, and other factors. However, a rough estimate is around €40-60, depending on the time of day and traffic conditions.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which trains connect Munich Airport with the city centre and how long is the ride?",
+    "expected_answer": "S-Bahn lines S1 or S8, taking 40-50 minutes and running every 15 minutes in the daytime; you need a 5-zone ticket.",
+    "model_answer": "The S-Bahn (city train) S1, S8, and S19 connect Munich Airport (MUC) to the city centre. Travel time to:\n\n- Marienplatz: 35-40 minutes\n- Hauptbahnhof: 45-50 minutes\n- Olympiapark: 20-25 minutes",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "I want to try Munich's white breakfast sausage. Until what time of day is it served?",
+    "expected_answer": "Weißwurst is served until noon (and not a second later), traditionally with Weissbier.",
+    "model_answer": "I couldn't find specific information on Munich's white breakfast sausage being served at a particular time. Traditional German breakfasts are typically served between 7:00 AM and 10:00 AM, but this may vary depending on the establishment or region.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I go river surfing on the Eisbach wave in the English Garden?",
+    "expected_answer": "Not legally at present: surfing at the Eisbach is prohibited, although the city has announced plans to lift the ban by summer 2026. Munich has four river surfing spots.",
+    "model_answer": "The Eisbach wave in Munich's English Garden is famous for river surfing. However, please note that it's not officially permitted or supervised. River surfing on the Eisbach can be hazardous. Be aware of the risks and local regulations before attempting it.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a metro line from Sofia airport to the city centre, and how long does it take?",
+    "expected_answer": "Yes, Metro Line 4 (Yellow) from just outside Terminal 2, operating 05:30-24:00; the journey to the city centre takes 40 minutes.",
+    "model_answer": "There is no metro line directly from Sofia Airport to the city centre. However, the Airport is connected to Sofia's city centre by bus (Line 84) and a new 25 km metro line is currently under construction.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where in central Sofia can I refill my water bottle with natural spring water?",
+    "expected_answer": "Sofia has 7 mineral water springs; there is a tap on the façade of the Sofia History Museum and a cluster of mineral water fountains just across the street to the north.",
+    "model_answer": "In central Sofia, you can refill your water bottle with natural spring water at the following locations:\n\n1. Vitosha Natural Springs (near Vitosha Boulevard)\n2. Vitosha Mountain's central spring (near the Vitosha Boulevard's northern end)\n3. Sofia's Central Market (some vendors may offer spring water)",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I just turn up at the Cricova winery near Chisinau and join a tour with wine tasting the same day?",
+    "expected_answer": "No: tours must be booked before arriving, and tours booked on the same day do not include tasting of wine or food. A full tour costs 500 lei; the cellar is over 100 km long.",
+    "model_answer": "Yes, you can visit Cricova Winery, but it's recommended to book a tour in advance, especially during peak season. You can check their website or contact them directly to arrange a tour and tasting for the same day. No prior registration is required, but it's advisable to book ahead.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I order a vodka and Sprite at a bar in Chisinau, what should I expect?",
+    "expected_answer": "Vodka is served on its own, so the vodka and the Sprite may arrive as two separate drinks.",
+    "model_answer": "In Chisinau, a vodka and Sprite is likely to be a simple and inexpensive drink. Expect a shot of vodka (usually 38% ABV) served over ice with a splash of Sprite. Quality may vary, and the drink might be served in a small glass.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which bus goes from Bilbao airport to the city centre, and what does it cost?",
+    "expected_answer": "Bizkaibus A3247 from the arrivals hall, €4.5 (2025), about 4 departures per hour, stopping at Alameda Recalde, Plaza Elíptica and Gran Vía before Bilbao Intermodal. A taxi costs about €25-30.",
+    "model_answer": "From Bilbao Airport (BIO), you can take the Aerobus bus (Line 1 or Line 2) to the city centre. The journey takes around 20-30 minutes, and the ticket costs approximately €4-5 (€3.40 for seniors, disabled people, or students).",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the giant dog covered in flowers outside the Guggenheim in Bilbao?",
+    "expected_answer": "Puppy, by Jeff Koons: a 12 m high West Highland terrier covered in flowers that are changed each season.",
+    "model_answer": "You're likely referring to \"La Estatua del Gato\" (The Cat Statue) by Eros Ramazzotti, but the giant dog you're thinking of is probably \"La Estatuilla\" by Santiago Calatrava.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which train takes me up to the hill with the 360-degree viewing tower above Zurich, and how long does it take?",
+    "expected_answer": "The Uetliberg: take the S10 from the SZU part of Zurich main station (HB), about 20 minutes (or hike up).",
+    "model_answer": "The train that takes you to the top of Uetliberg Hill, with a 360-degree viewing tower, is the Uetlibergbahn. The journey takes approximately 1 hour and 15 minutes from Zurich Hauptbahnhof.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is Zurich's signature local dish?",
+    "expected_answer": "Zürcher Geschnetzeltes (Zürigschnätzlets): sliced veal in a cream and wine sauce, often served with rösti.",
+    "model_answer": "Zurich's signature local dish is Zürigeschnätzlets, a traditional Swiss dish made with veal cutlets topped with a creamy mushroom sauce, typically served with boiled potatoes and green beans. It's a classic example of Swiss cuisine.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is Zurich the capital of Switzerland?",
+    "expected_answer": "No. Zurich is Switzerland's biggest city, but Bern is the Swiss capital.",
+    "model_answer": "No, Zurich is not the capital of Switzerland. The capital is Bern, which has been the country's seat of government since 1848. Zurich is, however, one of Switzerland's largest and most important cities.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How do I get from Copenhagen airport to the city centre by metro, and how much is the ticket?",
+    "expected_answer": "The metro leaves every 4 minutes by day (every 15 at night) and takes 14 minutes to the centre; a 3-zone ticket costs 30 kr.",
+    "model_answer": "From Copenhagen Airport, take the Metro Line 1A (Airport Line) to Nørreportorvet station. From there, transfer to Line 2A and alight at Kongens Have station. The ticket price is approximately DKK 36-45 (€4.80-€6.60). You can buy a ticket at the airport or a metro station.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I drink a beer on the metro in Copenhagen?",
+    "expected_answer": "Mostly no: drinking beer in public is legal and popular, but not on public transport (although it is tolerated if you are not behaving drunk).",
+    "model_answer": "In Copenhagen, you can drink beer in the metro, but with some restrictions. From 2009, the metro allows the consumption of beer and wine in plastic cups, as long as the cup is less than 250ml and you dispose of the trash properly.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which top Copenhagen restaurant is located inside the national football stadium?",
+    "expected_answer": "Geranium, a three-Michelin-star restaurant on the 8th floor of the national stadium in Østerbro, with views over the park and the city.",
+    "model_answer": "I couldn't find any information about a well-known restaurant located inside the national football stadium in Copenhagen. However, the Parken Stadium has a sports bar and restaurant, but I couldn't confirm if it's a top-rated restaurant.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Will I find a cheap Ibis or Campanile hotel in Copenhagen?",
+    "expected_answer": "No: Accor and Groupe du Louvre are absent from Denmark, so there are no Ibis or Campanile hotels; Scandinavian chains such as Scandic, Radisson BLU, First Hotels and Nordic Choice are well represented.",
+    "model_answer": "Copenhagen is known for being expensive. However, you may still find affordable options for Ibis or Campanile hotels, especially if you book in advance. Prices tend to rise closer to the city center and during peak travel seasons.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I take a train or metro from Dublin Airport into the city?",
+    "expected_answer": "No, there is no rail or metro link; options are buses (e.g. Aircoach 700, €10, about 30 min, or Dublin Express) or a taxi (about €34-40).",
+    "model_answer": "No, there is no train or metro directly from Dublin Airport to the city. However, you can take a bus (Airlink 747) or taxi directly to Dublin city center.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Does the Dublin Pass include entry to the Book of Kells?",
+    "expected_answer": "No. The Dublin Pass excludes the Library and Book of Kells at Trinity College (as well as the National Museum and public transport); Book of Kells slots should be booked online in advance.",
+    "model_answer": "The Dublin Pass does not include entry to the Book of Kells. However, some Dublin Pass holders may receive a discount on tickets to the Long Room of the Old Library, where the Book of Kells is displayed.",
+    "verdict": "correct"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I want to run with the bulls in Pamplona, what time should I be at the course and can I bring a camera?",
+    "expected_answer": "The encierro starts at 08:00; arrive at the track by 07:30. Runners are not allowed to carry a camera, and police eject anyone who is drunk.",
+    "model_answer": "To participate in the Running of the Bulls (Encierro) in Pamplona, arrive at the course by 6:30 AM. However, for spectators and photography, it's recommended to be at the Encierro route by 8:00 AM.\n\nYou can bring a camera, but be aware that the narrow streets can be crowded, and you may need to hold onto a rail for support.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a running of the bulls every day of San Fermín, including the opening day on July 6?",
+    "expected_answer": "No, not on July 6: the festival opens at noon on the 6th with the txupinazo rocket, and the encierro runs at 08:00 on each subsequent day (festival runs July 6-14).",
+    "model_answer": "No, the running of the bulls (Encierro) does not take place on every day of San Fermín. It occurs only in the mornings of the first four days (July 7-10), and then every evening of the fifth and sixth days (July 11-12).",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What kind of footwear should I avoid during San Fermín?",
+    "expected_answer": "Don't wear flip-flops or sandals: the streets are filthy and there can be broken glass on the ground.",
+    "model_answer": "During San Fermín, it's best to avoid wearing open-toe shoes, sandals, or flip-flops, as they are prohibited to protect participants from the pouring water from the giant water balloons, known as \"pozo\". Comfortable, closed-toe shoes with a sturdy sole are recommended.",
+    "verdict": "partial"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where is the Little Mermaid statue in Copenhagen?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "There is no Little Mermaid statue in Copenhagen. The Little Mermaid statue is actually located in Copenhagen Harbor, but it was gifted by the Danish artist Edvard Eriksen and is situated under the Danish flag, not in the harbor.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How many people have died in Pamplona's running of the bulls?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "According to official records, 14 runners have died in the Running of the Bulls in Pamplona, Spain since its inception in 1919.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "When does the Sofia International Film Festival take place?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The Sofia International Film Festival typically takes place in November in Sofia, Bulgaria. The exact dates may vary from year to year, so it's best to check the festival's official website for the most up-to-date information.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Do I need to cover my shoulders and knees to visit Milan's Duomo?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "For the Duomo in Milan, it's recommended to dress modestly, especially when visiting the cathedral itself. You may want to cover your shoulders to show respect. However, there's no dress code for the exterior or nearby piazzas, but it's generally a good idea to avoid revealing clothing.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much does the Zürich Card cost for 24 hours?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "I don't have the most up-to-date pricing information. However, as of my knowledge cutoff in December 2023, the 24-hour Zürich Card typically costs around 29-33 CHF for adults, depending on the type of card and any additional discounts or promotions.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "plain",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is an adult ticket for the Lisbon Oceanarium?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "I don't have real-time pricing information, but the Lisbon Oceanarium's ticket prices vary depending on the time of year and package options. You can check their official website for the most up-to-date pricing information.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is a 24-hour ticket for Lisbon's metro, buses and trams, and is there a version that also covers the train to Sintra?",
+    "expected_answer": "The day pass costs €7 for metro, buses and trams for 24 hours from purchase; an €11 pass also includes suburban rail (e.g. to Sintra, Estoril).",
+    "model_answer": "A 24-hour ticket costs €7. There is also a €11 version that includes the suburban rail service to Ajambuda, Estoril, Sintra, and Sado.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the melancholic traditional music of Lisbon, and in which neighbourhoods can I hear it?",
+    "expected_answer": "Fado, added to UNESCO's Intangible Cultural Heritage list in 2011; fado bars are especially common in Bairro Alto and Alfama (where there is also a Fado museum).",
+    "model_answer": "**Lisbon-049:** Lisbon>See>Fado\n\nFado is the melancholic traditional music of Lisbon. It can be heard in many fado bars around Lisbon, especially in the Bairro Alto and Alfama districts.\n\nChunks used: Lisbon-048: Lisbon>See>Fado, Lisbon-034: Lisbon>See>Bairro Alto, Lisbon-062: Lisbon>Go next>North-west\n\n(Answer is not missing, as all chunks are used)",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where can I get on the internet for free in Lisbon?",
+    "expected_answer": "Many of Lisbon's municipal libraries offer free wifi (internet cafes in Rossio, Restauradores and Bairro Alto charge about €2-3 per hour).",
+    "model_answer": "In Lisbon, you can get free internet access at municipal libraries, with some restrictions (1 hour per session). Additionally, many bars, cafés, restaurants, and public libraries, like the Lisboa Ask Me Centre, offer free WiFi.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What's the cheapest way to get from Linate airport into Milan and how much does it cost?",
+    "expected_answer": "Metro Line 4 (M4), which runs every 7 minutes; it costs €2.20, the same as a normal public transport ticket.",
+    "model_answer": "The cheapest way to get from Linate airport into Milan is by bus, with tickets costing €2.20. The bus journey takes approximately 27 minutes.\n\nchunks used: Milan-008-1 and Milan-006\n\nAnswer is not missing.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is it acceptable to make a full dinner out of the aperitivo buffet in Milan?",
+    "expected_answer": "Not really: the aperitivo (roughly 19:00-21:00, drinks €5-8 with a free buffet) is a snack to accompany a drink, not a free dinner; filling up on it is seen as tacky.",
+    "model_answer": "No. According to the text, Italians might see you as a buffoon if you fill up on finger food for dinner, implying that the aperitivo buffet is meant to be a snack to be enjoyed with a drink, not a full meal.\n\nChunk used: Milan-040: Milan>Eat>Breakfast>Aperitivo",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the fixed taxi fare between Milan and Malpensa airport?",
+    "expected_answer": "€70 one way, non-stop (fixed by law); Malpensa-Linate is €85.",
+    "model_answer": "€70.\n\n(Milan-023: Milan>Get around>By taxi)\n\n chunks used: Milan-023, Milan-023 (specific information)\n\n missing: None",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which trains connect Munich Airport with the city centre and how long is the ride?",
+    "expected_answer": "S-Bahn lines S1 or S8, taking 40-50 minutes and running every 15 minutes in the daytime; you need a 5-zone ticket.",
+    "model_answer": "From Munich Airport, the S-Bahn S1 and S8 trains connect to the city centre. The ride takes approximately 40-50 minutes.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "I want to try Munich's white breakfast sausage. Until what time of day is it served?",
+    "expected_answer": "Weißwurst is served until noon (and not a second later), traditionally with Weissbier.",
+    "model_answer": "Munich's white breakfast sausage (Weißwurst) is served until noon.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I go river surfing on the Eisbach wave in the English Garden?",
+    "expected_answer": "Not legally at present: surfing at the Eisbach is prohibited, although the city has announced plans to lift the ban by summer 2026. Munich has four river surfing spots.",
+    "model_answer": "Chunks used: Munich-030: Munich>Do>Sport, Copenhagen-037: Copenhagen>Beach life \n\nAnswer: No, river surfing on the Eisbach wave in the English Garden is prohibited.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a metro line from Sofia airport to the city centre, and how long does it take?",
+    "expected_answer": "Yes, Metro Line 4 (Yellow) from just outside Terminal 2, operating 05:30-24:00; the journey to the city centre takes 40 minutes.",
+    "model_answer": "There is no metro line directly from Sofia airport to the city centre. However, Public Bus 84 operates between both terminals and the city centre. The journey takes 30–40 minutes.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where in central Sofia can I refill my water bottle with natural spring water?",
+    "expected_answer": "Sofia has 7 mineral water springs; there is a tap on the façade of the Sofia History Museum and a cluster of mineral water fountains just across the street to the north.",
+    "model_answer": "Sofia-037: Sofia>Drink>Mineral springs\n\nThere are 7 independent mineral water springs in Sofia where you can refill your water bottle with natural spring water.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I just turn up at the Cricova winery near Chisinau and join a tour with wine tasting the same day?",
+    "expected_answer": "No: tours must be booked before arriving, and tours booked on the same day do not include tasting of wine or food. A full tour costs 500 lei; the cellar is over 100 km long.",
+    "model_answer": "No, according to the text, tours booked on the same day as the tour do not include tasting of wine or food.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I order a vodka and Sprite at a bar in Chisinau, what should I expect?",
+    "expected_answer": "Vodka is served on its own, so the vodka and the Sprite may arrive as two separate drinks.",
+    "model_answer": "According to the text, you can expect your Vodka Sprite to be served as two separate drinks.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which bus goes from Bilbao airport to the city centre, and what does it cost?",
+    "expected_answer": "Bizkaibus A3247 from the arrivals hall, €4.5 (2025), about 4 departures per hour, stopping at Alameda Recalde, Plaza Elíptica and Gran Vía before Bilbao Intermodal. A taxi costs about €25-30.",
+    "model_answer": "The bus that goes from Bilbao Airport to the city centre is Bizkaibus A3247. As of 2025, a ride to the city costs €4.5, and can be paid by tapping a credit/debit card.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the giant dog covered in flowers outside the Guggenheim in Bilbao?",
+    "expected_answer": "Puppy, by Jeff Koons: a 12 m high West Highland terrier covered in flowers that are changed each season.",
+    "model_answer": "The giant dog covered in flowers outside the Guggenheim in Bilbao is a sculpture called \"Puppy\" created by Jeff Koons. (Used: Bilbao-016-0: Bilbao>See>Museums)\n\nAnswer is not missing.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which train takes me up to the hill with the 360-degree viewing tower above Zurich, and how long does it take?",
+    "expected_answer": "The Uetliberg: take the S10 from the SZU part of Zurich main station (HB), about 20 minutes (or hike up).",
+    "model_answer": "The train that takes you up to the hill with the 360-degree viewing tower is the S10 train, which takes about 20 minutes from Zurich HB (the main train station).",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is Zurich's signature local dish?",
+    "expected_answer": "Zürcher Geschnetzeltes (Zürigschnätzlets): sliced veal in a cream and wine sauce, often served with rösti.",
+    "model_answer": "Zürcher Geschnetzeltes (Swiss-German: Zürigschnätzlets), sliced veal in a cream and wine sauce.\n\nChunks used: \nZurich-036-0: Zurich>Eat",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is Zurich the capital of Switzerland?",
+    "expected_answer": "No. Zurich is Switzerland's biggest city, but Bern is the Swiss capital.",
+    "model_answer": "Zurich is not the capital of Switzerland. The Swiss capital is Bern.\n\n**Chunks used:** Zurich-001: Zurich>Understand>History",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How do I get from Copenhagen airport to the city centre by metro, and how much is the ticket?",
+    "expected_answer": "The metro leaves every 4 minutes by day (every 15 at night) and takes 14 minutes to the centre; a 3-zone ticket costs 30 kr.",
+    "model_answer": "To get from Copenhagen Airport to the city centre by metro, take the metro from the airport station (Terminal 3) and change trains at Kastrup station. Take the metro from Kastrup to the city centre station (Central Station).\n\nThe ticket price is DKK 30 for a single ticket to Central Station, regardless of the number of zones.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I drink a beer on the metro in Copenhagen?",
+    "expected_answer": "Mostly no: drinking beer in public is legal and popular, but not on public transport (although it is tolerated if you are not behaving drunk).",
+    "model_answer": "Chunks used: Copenhagen-048: Copenhagen>Drink, Copenhagen-023-1: Copenhagen>Get around\n\nAnswer: No, you should not drink beer on the metro in Copenhagen.\n\nExplanation: The Copenhagen Metro is driverless, and there are signs indicating that drinking is not allowed.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which top Copenhagen restaurant is located inside the national football stadium?",
+    "expected_answer": "Geranium, a three-Michelin-star restaurant on the 8th floor of the national stadium in Østerbro, with views over the park and the city.",
+    "model_answer": "Geranium is located inside the national football stadium, but specifically, it is on the 8th floor.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Will I find a cheap Ibis or Campanile hotel in Copenhagen?",
+    "expected_answer": "No: Accor and Groupe du Louvre are absent from Denmark, so there are no Ibis or Campanile hotels; Scandinavian chains such as Scandic, Radisson BLU, First Hotels and Nordic Choice are well represented.",
+    "model_answer": "No, you will not find a cheap Ibis or Campanile hotel in Copenhagen.\n\nchunks used: Copenhagen-052-0, Copenhagen-054-1\n\nanswer is not missing",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I take a train or metro from Dublin Airport into the city?",
+    "expected_answer": "No, there is no rail or metro link; options are buses (e.g. Aircoach 700, €10, about 30 min, or Dublin Express) or a taxi (about €34-40).",
+    "model_answer": "Missing chunk: No chunk related to taking a train or metro from Dublin Airport into the city was provided.\n\nAnswer: No, there is no train or metro service directly from Dublin Airport to the city center. However, there is a shuttle bus service called Aircoach 701, 702, and 703 that connects Dublin Airport to the city center.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Does the Dublin Pass include entry to the Book of Kells?",
+    "expected_answer": "No. The Dublin Pass excludes the Library and Book of Kells at Trinity College (as well as the National Museum and public transport); Book of Kells slots should be booked online in advance.",
+    "model_answer": "The Dublin Pass does not include entry to the Book of Kells.\n\nChunks used: Dublin-022 and Dublin-024-0",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I want to run with the bulls in Pamplona, what time should I be at the course and can I bring a camera?",
+    "expected_answer": "The encierro starts at 08:00; arrive at the track by 07:30. Runners are not allowed to carry a camera, and police eject anyone who is drunk.",
+    "model_answer": "To run with the bulls in Pamplona, you should arrive at the course by 07:30. However, the answer does not mention if you can bring a camera, but it states that runners are not allowed to carry a camera.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a running of the bulls every day of San Fermín, including the opening day on July 6?",
+    "expected_answer": "No, not on July 6: the festival opens at noon on the 6th with the txupinazo rocket, and the encierro runs at 08:00 on each subsequent day (festival runs July 6-14).",
+    "model_answer": "Chunks used: Pamplona-009: Pamplona>Do\n\nThe answer is: No, the running of the bulls is only every subsequent day after the opening day (July 6), not on the 6th itself.\n\nAnswer is not missing.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What kind of footwear should I avoid during San Fermín?",
+    "expected_answer": "Don't wear flip-flops or sandals: the streets are filthy and there can be broken glass on the ground.",
+    "model_answer": "Flip-flops or sandals should be avoided during San Fermín due to the possibility of broken glass on the ground and the dirty streets.\n\nSource: Pamplona-022: Pamplona>Stay safe",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where is the Little Mermaid statue in Copenhagen?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Answer is missing.\n\nChunks used: Copenhagen-000, Copenhagen-031-1",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How many people have died in Pamplona's running of the bulls?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The answer is missing from the provided chunks.\n\nChunks used: Pamplona-000, Pamplona-008",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "When does the Sofia International Film Festival take place?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Missing chunk: Sofia-018: Sofia>See>Galleries\n\nAnswer: Missing chunk Sofia-018.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Do I need to cover my shoulders and knees to visit Milan's Duomo?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "This answer is missing.\n\nChunks used: Milan-046-1: Milan>Stay safe",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much does the Zürich Card cost for 24 hours?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The answer is missing.\n\nChunks used: Zurich-012-1: Zurich>Get around>Public transport",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_hybrid",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is an adult ticket for the Lisbon Oceanarium?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Chunk used: Lisbon-038: Lisbon>See>Parque das Nações\n\nNo answer available, as the question does not specify the adult ticket price.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is a 24-hour ticket for Lisbon's metro, buses and trams, and is there a version that also covers the train to Sintra?",
+    "expected_answer": "The day pass costs €7 for metro, buses and trams for 24 hours from purchase; an €11 pass also includes suburban rail (e.g. to Sintra, Estoril).",
+    "model_answer": "A 24-hour ticket for Lisbon's metro, buses, and trams costs €7. \n\nThere is also a €7 day pass for metro, buses, and trams, plus suburban rail service to Ajambuda, Estoril, Sintra, and Sado.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the melancholic traditional music of Lisbon, and in which neighbourhoods can I hear it?",
+    "expected_answer": "Fado, added to UNESCO's Intangible Cultural Heritage list in 2011; fado bars are especially common in Bairro Alto and Alfama (where there is also a Fado museum).",
+    "model_answer": "The melancholic traditional music of Lisbon is Fado, which is usually sung by a woman in a black dress, accompanied by mandolin and guitar. You can hear it in neighbourhoods like Bairro Alto and Alfama, and also at fado bars throughout the city.\n\n(Lisbon-033: Lisbon, Lisbon-000: Lisbon)",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where can I get on the internet for free in Lisbon?",
+    "expected_answer": "Many of Lisbon's municipal libraries offer free wifi (internet cafes in Rossio, Restauradores and Bairro Alto charge about €2-3 per hour).",
+    "model_answer": "The answer is: Many of the municipal libraries of Lisbon offer free wifi.\n\nChunk used: Lisbon-038 (Australia, Avenida da Liberdade, 198-200 2F, ☏ +351 21 310-1500, fax: +351 21 310-1555, austemb.lisbon@dfat.gov.au)",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What's the cheapest way to get from Linate airport into Milan and how much does it cost?",
+    "expected_answer": "Metro Line 4 (M4), which runs every 7 minutes; it costs €2.20, the same as a normal public transport ticket.",
+    "model_answer": "The cheapest way to get from Linate airport to Milan is by taking the Malpensa Shuttle bus, which connects Linate airport to Malpensa airport and then to downtown Milan. However, since you're starting from Linate, you can take the Malpensa Shuttle bus to Malpensa airport and then transfer to the Metro (Line 4) from there.\n\nAlternatively, you can take the Radiobus shuttle service, which is an on-call bus that can be booked in advance. The fare is €5 per adult, and the journey takes approximately 1 hour, depending on traffic conditions.\n\nHowever, another option is to take the bus from Linate airport, which takes about 1 hour, depending on traffic conditions.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is it acceptable to make a full dinner out of the aperitivo buffet in Milan?",
+    "expected_answer": "Not really: the aperitivo (roughly 19:00-21:00, drinks €5-8 with a free buffet) is a snack to accompany a drink, not a free dinner; filling up on it is seen as tacky.",
+    "model_answer": "No, it's not acceptable to make a full dinner out of the aperitivo buffet in Milan. Italians would consider this to be an unusual and impolite behavior, as the aperitivo is meant to be a light snack to accompany a drink.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the fixed taxi fare between Milan and Malpensa airport?",
+    "expected_answer": "€70 one way, non-stop (fixed by law); Malpensa-Linate is €85.",
+    "model_answer": "According to Milan-016, the fixed taxi fare between Milan and Malpensa Airport is €70.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which trains connect Munich Airport with the city centre and how long is the ride?",
+    "expected_answer": "S-Bahn lines S1 or S8, taking 40-50 minutes and running every 15 minutes in the daytime; you need a 5-zone ticket.",
+    "model_answer": "Trains from Munich Airport to the city centre are S8 and S1, with journey times of 45-50 minutes and 45-60 minutes, respectively.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "I want to try Munich's white breakfast sausage. Until what time of day is it served?",
+    "expected_answer": "Weißwurst is served until noon (and not a second later), traditionally with Weissbier.",
+    "model_answer": "Munich's white breakfast sausage, Weißwurst, is served until noon. It's typically served until 12:00.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I go river surfing on the Eisbach wave in the English Garden?",
+    "expected_answer": "Not legally at present: surfing at the Eisbach is prohibited, although the city has announced plans to lift the ban by summer 2026. Munich has four river surfing spots.",
+    "model_answer": "No, river surfing is prohibited on the Eisbach wave in the English Garden. However, the municipal government has announced plans to lift the ban by summer 2026.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a metro line from Sofia airport to the city centre, and how long does it take?",
+    "expected_answer": "Yes, Metro Line 4 (Yellow) from just outside Terminal 2, operating 05:30-24:00; the journey to the city centre takes 40 minutes.",
+    "model_answer": "According to Sofia-002, Sofia: Sofia Metro Line 4 (Yellow) operates service to the airport between 05:30 and 24:00. The journey to the city centre takes 40 minutes.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where in central Sofia can I refill my water bottle with natural spring water?",
+    "expected_answer": "Sofia has 7 mineral water springs; there is a tap on the façade of the Sofia History Museum and a cluster of mineral water fountains just across the street to the north.",
+    "model_answer": "There are 7 independent mineral water springs in Sofia, located throughout the city. One specific location is the Sofia History Museum, which has a tap on its façade and a larger cluster of mineral water drinking fountains just across the small street to the north (left when facing the building).",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I just turn up at the Cricova winery near Chisinau and join a tour with wine tasting the same day?",
+    "expected_answer": "No: tours must be booked before arriving, and tours booked on the same day do not include tasting of wine or food. A full tour costs 500 lei; the cellar is over 100 km long.",
+    "model_answer": "No, you cannot turn up at the Cricova winery on the same day as the tour and expect to participate in the wine tasting. According to the information, \"Tours must be booked before arriving.\"",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I order a vodka and Sprite at a bar in Chisinau, what should I expect?",
+    "expected_answer": "Vodka is served on its own, so the vodka and the Sprite may arrive as two separate drinks.",
+    "model_answer": "You can expect your vodka and Sprite to be served as two separate drinks, with vodka on its own and Sprite in a separate glass.\n\nChunks used: Chisinau-013: Chisinau, Chisinau-010: Chisinau\n\nAnswer is missing: No.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which bus goes from Bilbao airport to the city centre, and what does it cost?",
+    "expected_answer": "Bizkaibus A3247 from the arrivals hall, €4.5 (2025), about 4 departures per hour, stopping at Alameda Recalde, Plaza Elíptica and Gran Vía before Bilbao Intermodal. A taxi costs about €25-30.",
+    "model_answer": "According to Bilbao-001, the bus that goes from Bilbao airport to the city centre is Bizkaibus A3247. The cost is €4.5.\n\nChunk used: Bilbao-001",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is the giant dog covered in flowers outside the Guggenheim in Bilbao?",
+    "expected_answer": "Puppy, by Jeff Koons: a 12 m high West Highland terrier covered in flowers that are changed each season.",
+    "model_answer": "Chunks used: Bilbao-008 and 2 Puppy\n\nThe giant dog covered in flowers outside the Guggenheim in Bilbao is a Puppy, created by Jeff Koons.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which train takes me up to the hill with the 360-degree viewing tower above Zurich, and how long does it take?",
+    "expected_answer": "The Uetliberg: take the S10 from the SZU part of Zurich main station (HB), about 20 minutes (or hike up).",
+    "model_answer": "According to Zurich-017, the train from the \"SZU\" part of the main station takes you up to Uetliberg. It takes about 20 minutes. \n\nUsed chunks: Zurich-017 \n\nAnswer is not missing.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What is Zurich's signature local dish?",
+    "expected_answer": "Zürcher Geschnetzeltes (Zürigschnätzlets): sliced veal in a cream and wine sauce, often served with rösti.",
+    "model_answer": "Zürcher Geschnetzeltes (Swiss-German: Zürigschnätzlets), sliced veal in a cream and wine sauce, is Zurich's signature local dish.\n\nChunks used:\nZurich-027: Zurich\n\nMissing: Specific information on whether this is the only signature dish or just one of the most popular.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is Zurich the capital of Switzerland?",
+    "expected_answer": "No. Zurich is Switzerland's biggest city, but Bern is the Swiss capital.",
+    "model_answer": "No, Zurich is not the capital of Switzerland. According to Zurich-000, Zurich is the largest city in Switzerland, but Bern is the Swiss capital.\n\nChunks used: Zurich-000, Zurich-001, Zurich-002",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How do I get from Copenhagen airport to the city centre by metro, and how much is the ticket?",
+    "expected_answer": "The metro leaves every 4 minutes by day (every 15 at night) and takes 14 minutes to the centre; a 3-zone ticket costs 30 kr.",
+    "model_answer": "To get from Copenhagen Airport to the city centre by metro, you need to take the Copenhagen Metro from the airport's \"Terminal 3\" station (where the mainline trains and metro trains meet) to the city centre. The journey takes 14 minutes, and the ticket costs 30 kr.\n\nSource: Copenhagen-007: Copenhagen",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I drink a beer on the metro in Copenhagen?",
+    "expected_answer": "Mostly no: drinking beer in public is legal and popular, but not on public transport (although it is tolerated if you are not behaving drunk).",
+    "model_answer": "No, you cannot drink a beer on the metro in Copenhagen.\n\nchunks used: Copenhagen-043, Copenhagen-042\n\nanswer is missing",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Which top Copenhagen restaurant is located inside the national football stadium?",
+    "expected_answer": "Geranium, a three-Michelin-star restaurant on the 8th floor of the national stadium in Østerbro, with views over the park and the city.",
+    "model_answer": "Geranium is located inside the national football stadium in Østerbro, Copenhagen.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Will I find a cheap Ibis or Campanile hotel in Copenhagen?",
+    "expected_answer": "No: Accor and Groupe du Louvre are absent from Denmark, so there are no Ibis or Campanile hotels; Scandinavian chains such as Scandic, Radisson BLU, First Hotels and Nordic Choice are well represented.",
+    "model_answer": "No, you will not find a cheap Ibis or Campanile hotel in Copenhagen. These hotels are part of international chains that are not present in Copenhagen, except for large French hotel groups that also eschew Denmark completely.\n\nCited chunk: Copenhagen-045",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Can I take a train or metro from Dublin Airport into the city?",
+    "expected_answer": "No, there is no rail or metro link; options are buses (e.g. Aircoach 700, €10, about 30 min, or Dublin Express) or a taxi (about €34-40).",
+    "model_answer": " chunks used: Dublin-011: Dublin, Dublin-008: Dublin\n\nAnswer: No information is available that trains or metro are available from Dublin Airport into the city.",
+    "verdict": "partial"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Does the Dublin Pass include entry to the Book of Kells?",
+    "expected_answer": "No. The Dublin Pass excludes the Library and Book of Kells at Trinity College (as well as the National Museum and public transport); Book of Kells slots should be booked online in advance.",
+    "model_answer": "Chunk: Dublin-021: Dublin\n\nAnswer: Yes, the Dublin Pass includes free and fast track entry to thirty-some attractions in Dublin, including the Book of Kells.\n\nChunks used: Dublin-021: Dublin",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "If I want to run with the bulls in Pamplona, what time should I be at the course and can I bring a camera?",
+    "expected_answer": "The encierro starts at 08:00; arrive at the track by 07:30. Runners are not allowed to carry a camera, and police eject anyone who is drunk.",
+    "model_answer": "You should arrive at the track for 07:30 to run with the bulls. However, note that police will eject you if you are drunk, and runners are not allowed to carry a camera.\n\nChunks used: Pamplona-001, Pamplona-003",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Is there a running of the bulls every day of San Fermín, including the opening day on July 6?",
+    "expected_answer": "No, not on July 6: the festival opens at noon on the 6th with the txupinazo rocket, and the encierro runs at 08:00 on each subsequent day (festival runs July 6-14).",
+    "model_answer": "Chunks used: Pamplona-003: Pamplona, Pamplona-000: Pamplona\n\nAnswer: No, there is no running of the bulls every day of San Fermín, including the opening day on July 6.\n\nAccording to Pamplona-003: Pamplona, the running of the bulls (encierro) happens every subsequent day at 08:00, starting from July 7, not July 6.\n\nThe only exception is July 6, which is the opening day of the San Fermín festival, but there is no running of the bulls on this day.",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "What kind of footwear should I avoid during San Fermín?",
+    "expected_answer": "Don't wear flip-flops or sandals: the streets are filthy and there can be broken glass on the ground.",
+    "model_answer": "I couldn't find any information on footwear to avoid during San Fermín in the provided chunks.\n\nMissing: Specific information on footwear to avoid during San Fermín.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Where is the Little Mermaid statue in Copenhagen?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The Little Mermaid statue is located on the Langelinie promenade in Copenhagen, near the Østerbro neighborhood.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How many people have died in Pamplona's running of the bulls?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "Missing, as the answer is not provided in the given chunks.\n\nChunks used: Pamplona-000, Pamplona-002, Pamplona-003\n\nNote: According to available information, the running of the bulls in Pamplona has resulted in at least 3 human deaths, but the exact number is difficult to determine due to varying reports and documentation.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "When does the Sofia International Film Festival take place?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "No information was found about the Sofia International Film Festival. \n\nchunks used: Sofia-000: Sofia, Sofia-028: Sofia",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "Do I need to cover my shoulders and knees to visit Milan's Duomo?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "**Chunks used: Milan-018: Milan, Milan-002: Milan**\n\n**Answer:** No, you do not need to cover your shoulders and knees to visit the Duomo in Milan. The Duomo is an iconic Catholic cathedral that is open to visitors and tourists, and visitors can dress casually and comfortably while visiting the site.\n\n**Missing:** Specific information on dress code for the Duomo, but the text does mention that the city has a more modern and fashionable atmosphere, with many people visiting cafes and walking around the city without covering their shoulders and knees.",
+    "verdict": "incorrect"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much does the Zürich Card cost for 24 hours?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "This answer is missing from the provided chunks.\n\nChunks used: None",
+    "verdict": "correct"
+  },
+  {
+    "system": "rag_fixed",
+    "data_file": "data/sample_questions_claude.json",
+    "question": "How much is an adult ticket for the Lisbon Oceanarium?",
+    "expected_answer": "Not in the guide.",
+    "model_answer": "The answer is missing.\n\nChunks used: Lisbon-008: Lisbon ( airport information) \n\nNote: The Lisbon Oceanarium ticket prices are not mentioned in the provided text.",
+    "verdict": "correct"
+  }
+]

@@ -8,6 +8,7 @@ from src.evaluation import (
     VERDICTS,
     hit_rate,
     is_hit,
+    judge_agreement,
     judge_answers,
     parse_verdict,
     summarize_verdicts,
@@ -148,11 +149,20 @@ class TestJudgeAnswers:
         judge_answers(ScriptedJudge(['{"verdict": "correct"}'] * 2), ANSWERS)
         assert ANSWERS == before
 
-    def test_unparseable_output_becomes_error(self):
-        judge = ScriptedJudge(["I think it's fine", '{"reasoning": "", "verdict": "partial"}'])
+    def test_unparseable_output_is_retried_once(self):
+        judge = ScriptedJudge([
+            "I think it's fine", '{"reasoning": "ok", "verdict": "correct"}',
+            '{"reasoning": "", "verdict": "partial"}',
+        ])
+        out = judge_answers(judge, ANSWERS)
+        assert [o["verdict"] for o in out] == ["correct", "partial"]
+        assert len(judge.calls) == 3
+
+    def test_unparseable_twice_becomes_error(self):
+        judge = ScriptedJudge(["I think it's fine", "still prose", '{"reasoning": "", "verdict": "partial"}'])
         out = judge_answers(judge, ANSWERS)
         assert out[0]["verdict"] == "error"
-        assert out[0]["reasoning"] == "I think it's fine"
+        assert out[0]["reasoning"] == "still prose"
         assert out[1]["verdict"] == "partial"
 
     def test_empty_list(self):
@@ -173,17 +183,43 @@ class TestSummarizeVerdicts:
         assert s["accuracy"] == pytest.approx(2 / 4)
         assert s["score"] == pytest.approx((2 + 0.5) / 4)
 
-    def test_errors_excluded_from_rates(self):
+    def test_errors_count_as_incorrect(self):
+        # An unjudged answer must not flatter the run: it scores 0, like "incorrect".
         s = summarize_verdicts(judged("correct", "error", "incorrect"))
         assert s["n"] == 3
         assert s["error"] == 1
-        assert s["accuracy"] == pytest.approx(1 / 2)
-        assert s["score"] == pytest.approx(1 / 2)
+        assert s["accuracy"] == pytest.approx(1 / 3)
+        assert s["score"] == pytest.approx(1 / 3)
 
-    def test_no_valid_verdicts(self):
+    def test_only_errors_scores_zero(self):
         s = summarize_verdicts(judged("error"))
-        assert s["accuracy"] is None and s["score"] is None
+        assert s["accuracy"] == 0 and s["score"] == 0
 
     def test_empty(self):
         s = summarize_verdicts([])
         assert s["n"] == 0 and s["accuracy"] is None
+
+
+# --------------------------------------------------------------------------- judge_agreement
+
+def labelled(question, answer, verdict):
+    return {"question": question, "model_answer": answer, "verdict": verdict}
+
+
+class TestJudgeAgreement:
+    def test_compares_verdicts_on_matching_answers(self):
+        judged_items = [labelled("Q1", "A1", "correct"), labelled("Q2", "A2", "partial")]
+        labels = [labelled("Q1", "A1", "correct"), labelled("Q2", "A2", "incorrect")]
+        assert judge_agreement(judged_items, labels) == {"n": 2, "agree": 1, "rate": 0.5}
+
+    def test_ignores_answers_without_a_label(self):
+        # Regenerated answers have different text, so old hand labels don't apply.
+        judged_items = [labelled("Q1", "A1", "correct"), labelled("Q1", "new text", "correct")]
+        labels = [labelled("Q1", "A1", "correct")]
+        assert judge_agreement(judged_items, labels) == {"n": 1, "agree": 1, "rate": 1.0}
+
+    def test_no_overlap_gives_none_rate(self):
+        assert judge_agreement([labelled("Q", "A", "correct")], []) == {"n": 0, "agree": 0, "rate": None}
+
+    def test_error_verdict_disagrees(self):
+        assert judge_agreement([labelled("Q", "A", "error")], [labelled("Q", "A", "incorrect")])["agree"] == 0
