@@ -108,6 +108,49 @@ for a review or a hint (not the full solution).
 
 ## My notes
 
-- LLM choice:
-- Cities picked:
+- LLM choice: local via Ollama. Generator `llama3.2` (3B); judge `mistral-small`
+  (24B), with `qwen2.5:14b` as a faster alternative judge. Embeddings: `BAAI/bge-small-en-v1.5`
+  (fastembed).
+- Cities picked: Lisbon, Milan, Munich, Sofia, Chisinau, Bilbao, Zurich, Copenhagen,
+  Dublin, Pamplona.
 - Stage results:
+
+### Stage 6 baseline (2026-11-12)
+
+Setup: merged eval set (`data/sample_questions.json` + `data/sample_questions_claude.json`,
+48 questions: 40 answerable, 8 "Not in the guide."), k=3, generator `llama3.2`,
+judge `mistral-small` with few-shot rules. Score = (correct + 0.5 × partial) / n.
+
+| System     | Hit rate | Score | Accuracy | Answerable score | Unanswerable score | Judge agreement |
+|------------|----------|-------|----------|------------------|--------------------|-----------------|
+| plain      | -        | 0.27  | 0.17     | 0.33             | 0.00               | 39/48           |
+| rag_fixed  | 0.93     | 0.76  | 0.73     | 0.76             | 0.75               | 42/48           |
+| **rag_hybrid** | **1.00** | **0.78** | 0.69 | 0.74          | 1.00               | 38/48           |
+
+**Baseline for Stage 7: rag_hybrid, score 0.78, hit rate 1.00.** Every Stage 7
+change gets compared to this. One question is about 2 points, so treat differences
+under about 5 points as noise.
+
+How the judge got here:
+- The first judge was `llama3.2` grading its own answers. It agreed with my hand grades
+  (`data/hand_labels.json`, 144 verdicts) only 59% of the time, and ranked plain above RAG.
+- Changes: a separate, bigger judge; rewritten rules (the reference is the truth,
+  unanswerable questions checked first, key facts = what the question asks); JSON schema
+  output at temperature 0; judge errors count as incorrect; few-shot examples from cities
+  outside the eval set.
+- Agreement with the hand grades: 59% → 69% (mistral-small, new rules) → **83%**
+  (+ few-shot); `qwen2.5:14b` reached 78%. 83% is optimistic, because the examples were
+  written after seeing these disagreements. Hand-check about 15-20 fresh verdicts after
+  the next generation run.
+- Judge still leans slightly harsh: it gives partial/incorrect where I'd give
+  correct/partial. My hand-graded scores: plain 0.38, rag_fixed 0.77, rag_hybrid 0.89.
+
+Observations for Stage 7:
+- Hybrid already has a perfect hit rate on this set, so most of the gain now has to
+  come from generation.
+- The answer prompt (`tell if the answer is missing`) makes answers include
+  boilerplate like "Answer is missing" even when they do answer, and sometimes leads
+  to real refusals on answerable questions. That's the first thing to fix.
+- Plain llama3.2 guesses on every "Not in the guide." question (0/8); hybrid refuses
+  all 8 correctly.
+- A Copenhagen chunk was retrieved for a Munich question → metadata filtering by city.
