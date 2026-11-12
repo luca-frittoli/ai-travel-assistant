@@ -20,8 +20,8 @@
 | 3 | Chunking with metadata | ✅ |
 | 4 | Embeddings and retrieval (hit rate@5) | ✅ |
 | 5 | Grounded generation with citations | ✅ |
-| 6 | Automated evaluation (LLM-as-judge) | 🔄 in progress |
-| 7 | Improvements (hybrid search, reranking, metadata filtering, query rewriting) | ⏳ |
+| 6 | Automated evaluation (LLM-as-judge) | ✅ |
+| 7 | Improvements (hybrid search, reranking, metadata filtering, query rewriting) | ⏳ next |
 | 8 | Simple UI and rebuild with a RAG framework | ⏳ |
 
 The full roadmap is in [`docs/project_guide.md`](docs/project_guide.md).
