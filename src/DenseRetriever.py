@@ -18,6 +18,7 @@ class DenseRetriever:
         self._text_chunks = None
         self._embedding_file_name = self.indexes_path / f"embeddings_{self.embedding_model.model_name.replace('/', '_')}.npz"
         self._chunk_file_name = self.indexes_path / "chunks.json"
+        self.chunk_cities = np.array([c['id'].split('-')[0].lower() for c in self.chunks])
 
     def extract_text_from_chunks(self, text_keyword: str="text"):
         self._text_chunks = [chunk[text_keyword] for chunk in self.chunks]
@@ -67,12 +68,16 @@ class DenseRetriever:
     def _embed_query(self, query: str):
         return np.array(list(self.embedding_model.embed([query])))[0]
 
-    def search(self, query: str, k: int = 5) -> list[tuple[float, dict]]:
+    def search(self, query: str, k: int = 5, city: str | None=None) -> list[tuple[float, dict]]:
         if self.embeddings is None:
             raise RuntimeError("Embeddings are missing, call create_embedding_matrix() or load() first")
 
         query_embedding = self._embed_query(query)
-        similarity_scores = self.embeddings @ query_embedding
+        if city:
+            city_embeddings = self.embeddings[np.where(self.chunk_cities == city.lower())]
+            similarity_scores = city_embeddings @ query_embedding
+        else:
+            similarity_scores = self.embeddings @ query_embedding
         top_k = np.argsort(similarity_scores)[::-1][:k]
         return [
             (float(similarity_scores[i]), self.chunks[i])
