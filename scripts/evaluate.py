@@ -47,8 +47,11 @@ def answer_plain(caller: LLMCaller, question: dict) -> tuple[str, None]:
     return caller.ask_llm(question['question'], system="keep the answer under 50 words"), None
 
 
-def answer_rag(caller: LLMCaller, retriever: DenseRetriever, question: dict) -> tuple[str, list]:
-    retrieved = retriever.search(query=question['question'], k=K)
+def answer_rag(caller: LLMCaller, retriever: DenseRetriever, question: dict, use_city: bool=False) -> tuple[str, list]:
+    city = None
+    if use_city:
+        city = question['city']
+    retrieved = retriever.search(query=question['question'], k=K, city=city)
 
     question_rules = ""
     for _, chunk in retrieved:
@@ -197,11 +200,12 @@ def main() -> None:
         return
 
     hybrid = DenseRetriever.load(indexes_path=str(INDEXES / "hybrid"))
-    fixed = DenseRetriever.load(indexes_path=str(INDEXES / "fixed"))
+    # fixed = DenseRetriever.load(indexes_path=str(INDEXES / "fixed"))
     runs = {
-        "plain": lambda q: answer_plain(caller, q),
+        # "plain": lambda q: answer_plain(caller, q),
         "rag_hybrid": lambda q: answer_rag(caller, hybrid, q),
-        "rag_fixed": lambda q: answer_rag(caller, fixed, q),
+        # "rag_fixed": lambda q: answer_rag(caller, fixed, q),
+        "rag_hybrid_city": lambda q: answer_rag(caller, hybrid, q, use_city=True),
     }
 
     questions = load_eval_set(DATA_FILES, args.limit)
