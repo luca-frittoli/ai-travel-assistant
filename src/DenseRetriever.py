@@ -73,12 +73,16 @@ class DenseRetriever:
             raise RuntimeError("Embeddings are missing, call create_embedding_matrix() or load() first")
 
         query_embedding = self._embed_query(query)
+        similarity_scores = self.embeddings @ query_embedding
+
+        candidates = np.arange(len(self.chunks))
         if city:
-            city_embeddings = self.embeddings[np.where(self.chunk_cities == city.lower())]
-            similarity_scores = city_embeddings @ query_embedding
-        else:
-            similarity_scores = self.embeddings @ query_embedding
-        top_k = np.argsort(similarity_scores)[::-1][:k]
+            candidates = np.flatnonzero(self.chunk_cities == city.lower())
+            if candidates.size == 0:
+                raise ValueError(f"No chunks for city {city!r}")
+
+        # sort the candidates by score; values stay global indexes into self.chunks
+        top_k = candidates[np.argsort(similarity_scores[candidates])[::-1][:k]]
         return [
             (float(similarity_scores[i]), self.chunks[i])
             for i in top_k

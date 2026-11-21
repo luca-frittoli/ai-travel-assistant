@@ -61,6 +61,10 @@ class TestSearch:
         q = retriever._embed_query("pastel de nata")
         assert score == pytest.approx(float(retriever.embeddings[i] @ q))
 
+    def test_city_filter_returns_only_that_city(self, retriever):
+        results = retriever.search("local buses from the airport", k=2, city="Dublin")
+        assert results and all(c["city"] == "Dublin" for _, c in results)
+
 
 class TestPersistence:
     def test_save_raises_without_embeddings(self, fake_embedding, chunks, tmp_path):
