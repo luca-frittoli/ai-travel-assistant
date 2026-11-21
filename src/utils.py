@@ -1,4 +1,15 @@
+import re
+
 from src.config import CHUNK_SIZE, CHUNK_OVERLAP, SHORT_TAIL_TOL
+from src.static.city_aliases import CITY_ALTERNATIVE_NAMES
+
+
+_CITY_PATTERNS = {
+    city: re.compile(
+        r"\b(?:" + "|".join(re.escape(a) for a in sorted(aliases, key=len, reverse=True)) + r")\b"
+    )
+    for city, aliases in CITY_ALTERNATIVE_NAMES.items()
+}
 
 
 def chunk_words(
@@ -20,3 +31,14 @@ def chunk_words(
     else:
         out.append(' '.join(split_extract[start:]))
     return out
+
+def find_cities(text: str) -> list[str]:
+    """All cities mentioned in the text, in CITIES order."""
+    text = text.lower()
+    return [city for city, pattern in _CITY_PATTERNS.items() if pattern.search(text)]
+
+
+def detect_city(text: str) -> str | None:
+    """The city to filter on: only if exactly one city is mentioned, else None."""
+    cities = find_cities(text)
+    return cities[0] if len(cities) == 1 else None
