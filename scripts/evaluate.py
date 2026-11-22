@@ -27,14 +27,18 @@ from pathlib import Path
 
 from src.DenseRetriever import DenseRetriever
 from src.LLMCaller import LLMCaller
-from src.config import QUESTION_RULES, DEFAULT_LLM, DEFAULT_EMBEDDING, JUDGE_LLM
+from src.pipeline import RAGPipeline
+from src.config import DEFAULT_LLM, DEFAULT_EMBEDDING, JUDGE_LLM
 from src.evaluation import hit_rate, judge_agreement, judge_answers, summarize_verdicts
 
-DATA_FILES = ["data/sample_questions.json", "data/sample_questions_claude.json"]
-EVAL_SET = "eval"                    # name of the merged set in file names and results
+DATA_FILES = [
+    # "data/sample_questions.json", "data/sample_questions_claude.json",
+    "data/hard_questions.json"
+]
+EVAL_SET = "hard"                    # name of the merged set in file names and results
 OUT = Path("out")
 INDEXES = Path("indexes")
-RESULTS_LOG = OUT / "results.jsonl"  # one line per run -> your tracked numbers
+RESULTS_LOG = OUT / "hard_results.jsonl"  # one line per run -> your tracked numbers
 HAND_LABELS = Path("data/hand_labels.json")  # hand-graded verdicts -> judge agreement
 K = 3                                # the same k the LLM actually sees
 
@@ -42,23 +46,18 @@ K = 3                                # the same k the LLM actually sees
 # --------------------------------------------------------------------------- systems
 # Every system has the same shape: question dict -> (model_answer, retrieved or None)
 
-def answer_plain(caller: LLMCaller, question: dict) -> tuple[str, None]:
+def answer_plain(caller: LLMCaller, question: dict) -> tuple[str, None, None]:
     # Stage 1 baseline, no retrieval (see scripts/plain_llm_test.py)
-    return caller.ask_llm(question['question'], system="keep the answer under 50 words"), None
+    return caller.ask_llm(question['question'], system="keep the answer under 50 words"), None, None
 
 
-def answer_rag(caller: LLMCaller, retriever: DenseRetriever, question: dict, use_city: bool=False) -> tuple[str, list]:
+def answer_rag(rag_pipeline: RAGPipeline, question: dict, use_city: bool=False, city_oracle: bool=False) -> tuple[str, list, str | None]:
     city = None
-    if use_city:
+    if use_city and city_oracle:
         city = question['city']
-    retrieved = retriever.search(query=question['question'], k=K, city=city)
 
-    question_rules = ""
-    for _, chunk in retrieved:
-        question_rules += f"{chunk['id']}: {chunk['text']}\n"
-
-    return caller.ask_llm(question['question'], system=QUESTION_RULES + question_rules), retrieved
-
+    rag_response = rag_pipeline.answer(question=question['question'], city=city)
+    return rag_response.answer, rag_response.retrieved, rag_response.city
 
 # --------------------------------------------------------------------------- helpers
 
@@ -89,8 +88,8 @@ def generate(system_fn, questions: list[dict]) -> tuple[list[dict], list | None]
     n = len(questions)
     for i, question in enumerate(questions, start=1):
         print(f"  answering {i}/{n}", end="\r", flush=True)
-        model_answer, retrieved_per_question = system_fn(question)
-        answers.append({**question, "model_answer": model_answer})
+        model_answer, retrieved_per_question, city_used = system_fn(question)
+        answers.append({**question, "model_answer": model_answer, "city_used": city_used})
         retrieved.append(retrieved_per_question)
     print()
     if all(r is None for r in retrieved):
@@ -201,11 +200,14 @@ def main() -> None:
 
     hybrid = DenseRetriever.load(indexes_path=str(INDEXES / "hybrid"))
     # fixed = DenseRetriever.load(indexes_path=str(INDEXES / "fixed"))
+    hybrid_pipeline = RAGPipeline(retriever=hybrid, caller=caller, k=K)
+    hybrid_pipeline_detect_city = RAGPipeline(retriever=hybrid, caller=caller, k=K, detect_city_flag=True)
     runs = {
         # "plain": lambda q: answer_plain(caller, q),
-        "rag_hybrid": lambda q: answer_rag(caller, hybrid, q),
+        "rag_hybrid": lambda q: answer_rag(hybrid_pipeline, question=q, use_city=False),
         # "rag_fixed": lambda q: answer_rag(caller, fixed, q),
-        "rag_hybrid_city": lambda q: answer_rag(caller, hybrid, q, use_city=True),
+        "rag_hybrid_city_oracle": lambda q: answer_rag(hybrid_pipeline, question=q, use_city=True, city_oracle=True),
+        "rag_hybrid_city_detect": lambda q: answer_rag(hybrid_pipeline_detect_city, question=q, use_city=True),
     }
 
     questions = load_eval_set(DATA_FILES, args.limit)

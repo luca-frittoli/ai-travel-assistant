@@ -1,0 +1,170 @@
+[
+  {
+    "question": "How do I get from the airport to the city centre by metro, and how much is the ticket?",
+    "expected_answer": "The metro leaves every 4 minutes by day (every 15 at night) and takes 14 minutes to the centre; a 3-zone ticket costs 30 kr.",
+    "city": "Copenhagen",
+    "section": "Get in",
+    "category": "no_city"
+  },
+  {
+    "question": "Is there a fixed taxi fare from Malpensa into the city?",
+    "expected_answer": "€70 one way, non-stop (fixed by law); Malpensa-Linate is €85.",
+    "city": "Milan",
+    "section": "Get around",
+    "category": "no_city"
+  },
+  {
+    "question": "Can I drink a beer on the metro here?",
+    "expected_answer": "Mostly no: drinking beer in public is legal and popular, but not on public transport (although it is tolerated if you are not behaving drunk).",
+    "city": "Copenhagen",
+    "section": "Drink",
+    "category": "no_city"
+  },
+  {
+    "question": "Which bus goes from the airport to the city centre, and what does it cost?",
+    "expected_answer": "Bizkaibus A3247 from the arrivals hall, €4.5 (2025), about 4 departures per hour, stopping at Alameda Recalde, Plaza Elíptica and Gran Vía before Bilbao Intermodal. A taxi costs about €25-30.",
+    "city": "Bilbao",
+    "section": "Get in",
+    "category": "no_city"
+  },
+  {
+    "question": "Where in the centre can I refill my water bottle with natural spring water?",
+    "expected_answer": "Sofia has 7 mineral water springs; there is a tap on the façade of the Sofia History Museum and a cluster of mineral water fountains just across the street to the north.",
+    "city": "Sofia",
+    "section": "Drink",
+    "category": "no_city"
+  },
+  {
+    "question": "What is the signature local dish I should try here?",
+    "expected_answer": "Zürcher Geschnetzeltes (Zürigschnätzlets): sliced veal in a cream and wine sauce, often served with rösti.",
+    "city": "Zurich",
+    "section": "Eat",
+    "category": "no_city"
+  },
+  {
+    "question": "Is there a train or metro from the airport into the city?",
+    "expected_answer": "No, there is no rail or metro link; options are buses (e.g. Aircoach 700, €10, about 30 min, or Dublin Express) or a taxi (about €34-40).",
+    "city": "Dublin",
+    "section": "Get in",
+    "category": "no_city"
+  },
+  {
+    "question": "Where can I get free wifi in town?",
+    "expected_answer": "Many of Lisbon's municipal libraries offer free wifi (internet cafes in Rossio, Restauradores and Bairro Alto charge about €2-3 per hour).",
+    "city": "Lisbon",
+    "section": "Connect",
+    "category": "no_city"
+  },
+  {
+    "question": "What are the cheap ways of getting around town?",
+    "expected_answer": "You can use trolley-buses, buses, and maxi-taxis, like the locals do.",
+    "city": "Chisinau",
+    "section": "Get around",
+    "category": "no_city"
+  },
+  {
+    "question": "What's the cheapest way to get from Linate into Milano, and how much does it cost?",
+    "expected_answer": "Metro Line 4 (M4), which runs every 7 minutes; it costs €2.20, the same as a normal public transport ticket.",
+    "city": "Milan",
+    "section": "Get in",
+    "category": "alias"
+  },
+  {
+    "question": "Which S-Bahn lines go from the airport into München, and how long is the ride?",
+    "expected_answer": "S-Bahn lines S1 or S8, taking 40-50 minutes and running every 15 minutes in the daytime; you need a 5-zone ticket.",
+    "city": "Munich",
+    "section": "Get in",
+    "category": "alias"
+  },
+  {
+    "question": "How much is a 24-hour public transport pass in Lisboa, and is there one that also covers the train to Sintra?",
+    "expected_answer": "The day pass costs €7 for metro, buses and trams for 24 hours from purchase; an €11 pass also includes suburban rail (e.g. to Sintra, Estoril).",
+    "city": "Lisbon",
+    "section": "Get around",
+    "category": "alias"
+  },
+  {
+    "question": "What happens if I order a vodka and Sprite in a bar in Kishinev?",
+    "expected_answer": "Vodka is served on its own, so the vodka and the Sprite may arrive as two separate drinks.",
+    "city": "Chisinau",
+    "section": "Drink",
+    "category": "alias"
+  },
+  {
+    "question": "What is the giant flower-covered dog in front of the Guggenheim in Bilbo?",
+    "expected_answer": "Puppy, by Jeff Koons: a 12 m high West Highland terrier covered in flowers that are changed each season.",
+    "city": "Bilbao",
+    "section": "See",
+    "category": "alias"
+  },
+  {
+    "question": "For the encierro in Iruña, what time should I be at the course and can I carry a camera?",
+    "expected_answer": "The encierro starts at 08:00; arrive at the track by 07:30. Runners are not allowed to carry a camera, and police eject anyone who is drunk.",
+    "city": "Pamplona",
+    "section": "Do",
+    "category": "alias"
+  },
+  {
+    "question": "Is there a metro from the airport to the centre of Sofiya, and how long does it take?",
+    "expected_answer": "Yes, Metro Line 4 (Yellow) from just outside Terminal 2, operating 05:30-24:00; the journey to the city centre takes 40 minutes.",
+    "city": "Sofia",
+    "section": "Get in",
+    "category": "alias"
+  },
+  {
+    "question": "Are there any Ibis or Campanile hotels in København?",
+    "expected_answer": "No: Accor and Groupe du Louvre are absent from Denmark, so there are no Ibis or Campanile hotels; Scandinavian chains such as Scandic, Radisson BLU, First Hotels and Nordic Choice are well represented.",
+    "city": "Copenhagen",
+    "section": "Sleep",
+    "category": "alias"
+  },
+  {
+    "question": "How much is an adult ticket for the Oceanarium in Lisboa?",
+    "expected_answer": "Not in the guide.",
+    "city": "Lisbon",
+    "section": null,
+    "category": "alias"
+  },
+  {
+    "question": "Do I need to cover my shoulders and knees to visit the Duomo di Milano?",
+    "expected_answer": "Not in the guide.",
+    "city": "Milan",
+    "section": null,
+    "category": "alias"
+  },
+  {
+    "question": "My friend Sofia says Munich is all about beer. Where should I go to drink it?",
+    "expected_answer": "Beer Halls (indoors) or Beer Gardens (outdoors).",
+    "city": "Munich",
+    "section": "Drink",
+    "category": "multi_city"
+  },
+  {
+    "question": "I'm going from Bilbao to Pamplona for San Fermín. What footwear should I avoid?",
+    "expected_answer": "Don't wear flip-flops or sandals: the streets are filthy and there can be broken glass on the ground.",
+    "city": "Pamplona",
+    "section": "Stay safe",
+    "category": "multi_city"
+  },
+  {
+    "question": "After a few days in Munich I'm heading to Sofia. What are the traditional fast foods there?",
+    "expected_answer": "Traditional Bulgarian bakeries offer banitsa, katma, and other kinds of pastry with ayran or boza.",
+    "city": "Sofia",
+    "section": "Eat",
+    "category": "multi_city"
+  },
+  {
+    "question": "We're driving from Zurich to Spain. Is it easy to get around Bilbao by car?",
+    "expected_answer": "Bilbao is difficult to drive in, and certain vehicles may not be allowed.",
+    "city": "Bilbao",
+    "section": "Get around",
+    "category": "multi_city"
+  },
+  {
+    "question": "Is Zurich the capital of Switzerland, like Dublin is for Ireland?",
+    "expected_answer": "No. Zurich is Switzerland's biggest city, but Bern is the Swiss capital.",
+    "city": "Zurich",
+    "section": "Understand",
+    "category": "multi_city"
+  }
+]
